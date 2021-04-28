@@ -7,6 +7,6 @@ using namespace std;
 int main()
 {
     State_Manager sm;
-    sm.run();
+    //sm.run();
     return 0;
 }

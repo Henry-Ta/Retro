@@ -9,7 +9,7 @@ class State_Manager : public User_Profile
 {
 private:
     bool is_running;
-    char state;
+    int state;
 
     Menu menu;
     About about;

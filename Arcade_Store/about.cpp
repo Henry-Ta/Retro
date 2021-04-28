@@ -14,16 +14,16 @@ void About::update(){
     this->display();
 
     int i;
-    cout << "\n\t\t\tWhich number do you choose ?";
+    cout << "\n\t\t\tWhich number do you choose ? ";
     cin >> i;
 
-    if(i==8 || i==9){
-        this->set_user_selection(i);
+    if(i==6 || i==7 || i==8 || i==9){			//if user's choice match any option on the list
+        //this->set_user_selection(i);
         this->set_next_state(i);
         this->set_is_finished(true);
     }else if(i==0){
         exit(0);
-    }else{
+    }else{						// not match
         cout << "Wrong input, please try again !";
     }
 }

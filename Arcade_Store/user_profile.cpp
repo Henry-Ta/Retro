@@ -8,24 +8,25 @@
 
 User_Profile::User_Profile()
 {
+    this->set_is_accessed(false);
     int choice;
     this->show_login_signup();
-    cin >> choice;
+    cin >> choice;          // only accept number with int, error with characters
     this->set_user_selection(choice);
 
     switch(choice){
     case 1:
-        this->set_is_accessed(this->user_login());
+        this->set_is_accessed(this->user_login());          // Log in
         break;
     case 2:
-        this->set_is_accessed(this->user_signup());
+        this->set_is_accessed(this->user_signup());         // Sign up
         break;
     case 0:
         exit(0);
+
     default:
         system("clear");
-        cout << "Wrong input, please try again!\n";
-        User_Profile();
+        cout << "Input-> Wrong";
     }
 }
 
@@ -100,43 +101,55 @@ bool User_Profile::user_login(){
     this->show_logo();
     cout << "\n\t❅--------------| WELCOME TO ARCADE WORLD |--------------❅\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│                        Log In                         │\n";
+    cout << "\t│                        LOG IN                         │\n";
     cout << "\t•-------------------------------------------------------•\n";
 
     this->set_id_password();
     bool valid_login;
 
-    if(this->get_user_id().length()>0 && this->get_user_password().length()>0){
-        valid_login = this->user_validation(this->get_user_id(),this->get_user_password(),"user_data.txt");
-        if(!valid_login){
-            //system("clear");
-            //cout << "Wrong Id / Password\n";
+    if(this->get_user_id().length()>0 && this->get_user_password().length()>0){     // id, pass not empty
+        valid_login = this->user_validation(this->get_user_id(),this->get_user_password(),"user_data.txt");     // return true/false after checking id,pass with data in "user_data.txt"
+        if(!valid_login){           // failed validation
+            system("clear");
+            cout << "Wrong Id / Password";
             this->user_login();
         }
-    }else{
+    }else{ 				// id,pass empty
         //system("clear");
-        cout << "Id / Password empty\n";
+        cout << "Id / Password empty";
         this->user_login();
     }
     return true;
 }
 
 bool User_Profile::user_signup(){
+    system("clear");
+
+    this->show_logo();
+    cout << "\n\t❅--------------| WELCOME TO ARCADE WORLD |--------------❅\n";
+    cout << "\t•-------------------------------------------------------•\n";
+    cout << "\t│                        SIGN UP                        │\n";
+    cout << "\t•-------------------------------------------------------•\n";
+
     this->set_id_password();
 
-    if(this->get_user_id().length()>0 && this->get_user_password().length()>0){
-        this->save_to_file(this->get_user_id(),this->get_user_password(),"user_data.txt");
-        //cout << "Signed Up Successfully !";
+    if(this->get_user_id().length()>0 && this->get_user_password().length()>0){			// if,pass not empty
+        this->save_to_file(this->get_user_id(),this->get_user_password(),"user_data.txt");		// Save to file "user_data.txt"
+        cout << "Signed Up Successfully !";
         return true;
+    }else{ 				// id,pass empty
+        //system("clear");
+        cout << "Id / Password empty";
+        this->user_signup();
     }
     return false;
 }
 
 void User_Profile::save_to_file(string id, string passwd, string file_name){
-    string id_passwd = id + "," + passwd + "\n";
+    string id_passwd = id + "," + passwd + "\n";		// uses ',' to seperate data
 
-    ofstream file;
-    file.open(file_name, ofstream::app);
+    ofstream file;			// open file, if not exist create a new file
+    file.open(file_name, ofstream::app);		// open file and point to the last line ( to insert new data later on )
     file << id_passwd;
 }
 
@@ -145,9 +158,8 @@ bool User_Profile::user_validation(string id, string passwd, string file_name){
     string id_passwd = id + "," + passwd;       // insert ',' into string to match with line in file
     ifstream read_file(file_name);
 
-    // Use a while loop together with the getline() function to read the file line by line
-    while (getline (read_file, line)) {
-        if(id_passwd.compare(line)==0){
+    while (getline (read_file, line)) {	// Use a while loop together with the getline() function to read the file line by line
+        if(id_passwd.compare(line)==0){	// if match any line
             return true;
         }
     }
@@ -155,7 +167,7 @@ bool User_Profile::user_validation(string id, string passwd, string file_name){
 }
 
 void User_Profile::show_logo(){
-    cout<<"\t  _______  _______  _______  _______  ______   _______     \n";
+    cout<<"\n\t  _______  _______  _______  _______  ______   _______     \n";
     cout<<"\t (  ___  )(  ____ )(  ____ \\(  ___  )(  __  \\ (  ____ \\    \n";
     cout<<"\t | (   ) || (    )|| (    \\/| (   ) || (  \\  )| (    \\/    \n";
     cout<<"\t | (___) || (____)|| |      | (___) || |   ) || (__        \n";

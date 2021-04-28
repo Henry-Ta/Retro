@@ -8,9 +8,9 @@ State::State()              // base class for all other event states ( Menu, Abo
 {
     this->set_is_finished(false);           // initiate a flag to check whether a current state is still running
     this->set_next_state(-1);
-    this->set_user_selection(-1);
 
     /*
+     this->set_user_selection(-1);
     this->set_current_state(-1);
     this->set_is_selected(false);
     */
@@ -30,6 +30,7 @@ int State::get_next_state(){
     return this->next_state;
 }
 
+/*
 void State::set_user_selection(int i){
     this->user_selection = i;
 }
@@ -37,7 +38,6 @@ int State::get_user_selection(){
     return this->user_selection;
 }
 
-/*
 void State::set_current_state(string s){
     this->current_state = s;
 }

@@ -14,11 +14,15 @@ State_Manager::State_Manager():User_Profile()           // Constructor: inherits
 {
     if(User_Profile::get_is_accessed()){                // passed user validation
         this->set_is_running(true);
-        this->set_state(8);                 // start with state of Menu (8)
+        this->set_state(8);                 // start with the state of Menu (8)
+        this->run();
     }else{                                              // failed user validation
-        cout << "Access Denied";
+        cout << "\nAccess-> Denied";
+        this->set_is_running(false);
+        this->set_state(-1);
         State_Manager();
     }
+
 }
 
 void State_Manager::set_is_running(bool s){
@@ -37,6 +41,7 @@ int State_Manager::get_state(){
 }
 
 void State_Manager::update(){
+    system("clear");
     this->show_logo();
     string id_upper = User_Profile::get_user_id();
     transform(id_upper.begin(), id_upper.end(), id_upper.begin(), ::toupper);       // convert user id to upper case for displaying
@@ -49,6 +54,14 @@ void State_Manager::update(){
         break;
         case 3:
         break;
+        case 6:
+        break;
+        case 7:
+            system("clear");
+            User_Profile::set_is_accessed(false);
+            State_Manager();
+            break;
+
         case 8:
             if(!menu.get_is_finished()){            // if (Menu) state didn't finish
                 menu.update();                      // keep updating
@@ -66,23 +79,19 @@ void State_Manager::update(){
                 about.set_is_finished(false);
             }
             break;
-
-        case 0:                                     // NEED TO UPDATE, NOT WORK AS EXPECTED
-            this->set_is_running(false);
-            break;
     }
 }
 
 void State_Manager::run(){
-    do{
+    while(this->get_is_running()){
         system("clear");
         this->update();
         usleep(1000);               // delaying system to display animation
-    }while(this->get_is_running());
+    };
 }
 
 void State_Manager::show_logo(){
-    cout<<"\t  _______  _______  _______  _______  ______   _______     \n";
+    cout<<"\n\t  _______  _______  _______  _______  ______   _______     \n";
     cout<<"\t (  ___  )(  ____ )(  ____ \\(  ___  )(  __  \\ (  ____ \\    \n";
     cout<<"\t | (   ) || (    )|| (    \\/| (   ) || (  \\  )| (    \\/    \n";
     cout<<"\t | (___) || (____)|| |      | (___) || |   ) || (__        \n";
