@@ -57,12 +57,18 @@ int User_Profile::get_user_score(){
     return this->user_score;
 }
 
-void User_Profile::show_login_signup(){
-    cout << "Welcome to ARCADE\n";
-    cout << "1: Log In\n";
-    cout << "2: Sign Up\n";
-    cout << "0: Exit\n";
-    cout << "What's your choice ? ";
+void User_Profile::show_login_signup(){    
+    this->show_logo();
+
+    cout << "\n\t❅--------------| WELCOME TO ARCADE WORLD |--------------❅\n";
+    cout << "\t•-------------------------------------------------------•\n";
+    cout << "\t│                          HOME                         │\n";
+    cout << "\t•-------------------------------------------------------•\n";
+    cout << "\t│                       1. Log In                       │\n";
+    cout << "\t│                       2. Sign Up                      │\n";
+    cout << "\t│                       0. Exit                         │\n";
+    cout << "\t•-------------------------------------------------------•\n";
+    cout << "\t\t\t  What's your choice ? ";
 }
 
 void User_Profile::set_is_accessed(bool b){
@@ -75,13 +81,13 @@ bool User_Profile::get_is_accessed(){
 void User_Profile::set_id_password(){
     string id, password;
 
-    cout << "ID: ";
+    cout << "\t\t\t\tID: ";
     //getline(cin,id);
     cin >> id;
     transform(id.begin(), id.end(), id.begin(), ::tolower);         // convert to lower case
     this->set_user_id(id);
 
-    cout << "Password: ";
+    cout << "\t\t\t\tPassword: ";
     //getline(cin,password);
     cin >> password;
     transform(password.begin(), password.end(), password.begin(), ::tolower);
@@ -89,18 +95,26 @@ void User_Profile::set_id_password(){
 }
 
 bool User_Profile::user_login(){
+    system("clear");
+
+    this->show_logo();
+    cout << "\n\t❅--------------| WELCOME TO ARCADE WORLD |--------------❅\n";
+    cout << "\t•-------------------------------------------------------•\n";
+    cout << "\t│                        Log In                         │\n";
+    cout << "\t•-------------------------------------------------------•\n";
+
     this->set_id_password();
     bool valid_login;
 
     if(this->get_user_id().length()>0 && this->get_user_password().length()>0){
         valid_login = this->user_validation(this->get_user_id(),this->get_user_password(),"user_data.txt");
         if(!valid_login){
-            system("clear");
-            cout << "Wrong Id / Password\n";
+            //system("clear");
+            //cout << "Wrong Id / Password\n";
             this->user_login();
         }
     }else{
-        system("clear");
+        //system("clear");
         cout << "Id / Password empty\n";
         this->user_login();
     }
@@ -112,11 +126,10 @@ bool User_Profile::user_signup(){
 
     if(this->get_user_id().length()>0 && this->get_user_password().length()>0){
         this->save_to_file(this->get_user_id(),this->get_user_password(),"user_data.txt");
-        cout << "Signed Up Successfully !";
+        //cout << "Signed Up Successfully !";
         return true;
     }
     return false;
-
 }
 
 void User_Profile::save_to_file(string id, string passwd, string file_name){
@@ -139,4 +152,15 @@ bool User_Profile::user_validation(string id, string passwd, string file_name){
         }
     }
     return false;
+}
+
+void User_Profile::show_logo(){
+    cout<<"\t  _______  _______  _______  _______  ______   _______     \n";
+    cout<<"\t (  ___  )(  ____ )(  ____ \\(  ___  )(  __  \\ (  ____ \\    \n";
+    cout<<"\t | (   ) || (    )|| (    \\/| (   ) || (  \\  )| (    \\/    \n";
+    cout<<"\t | (___) || (____)|| |      | (___) || |   ) || (__        \n";
+    cout<<"\t |  ___  ||     __)| |      |  ___  || |   | ||  __)       \n";
+    cout<<"\t | (   ) || (\\ (   | |      | (   ) || |   ) || (          \n";
+    cout<<"\t | )   ( || ) \\ \\__| (____/\\| )   ( || (__/  )| (____/\\    \n";
+    cout<<"\t |/     \\||/   \\__/(_______/|/     \\|(______/ (_______/    \n";
 }
