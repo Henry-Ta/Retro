@@ -1,8 +1,5 @@
 #include "state.h"
 
-#include <string>
-
-using namespace std;
 
 State::State()              // base class for all other event states ( Menu, About, ... )
 {
@@ -30,6 +27,9 @@ int State::get_next_state(){
     return this->next_state;
 }
 
+void State::update(){}
+
+void State::display(){}
 /*
 void State::set_user_selection(int i){
     this->user_selection = i;

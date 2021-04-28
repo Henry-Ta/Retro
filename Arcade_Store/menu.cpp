@@ -1,10 +1,5 @@
 #include "menu.h"
-#include "state.h"
 
-#include <iostream>
-#include <unistd.h>             // Used for usleep()
-
-using namespace std;
 
 Menu::Menu():State()
 {

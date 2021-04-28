@@ -3,6 +3,10 @@
 
 #include "state.h"
 
+#include <iostream>
+
+using namespace std;
+
 class About : public State
 {
 public:

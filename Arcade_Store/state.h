@@ -1,8 +1,6 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include <string>
-using namespace std;
 
 class State
 {
@@ -26,6 +24,10 @@ public:
     void set_user_selection(int i);
     int get_user_selection();
 
+    void initiate();
+    void update();
+    void display();
+
     /*
     void set_current_state(string s);
     string get_current_state();
@@ -33,12 +35,6 @@ public:
     void set_is_selected(bool s);
     bool get_is_selected();
     */
-
-    void initiate(){}
-
-    void update(){}
-
-    void display(){}
 };
 
 #endif // STATE_H

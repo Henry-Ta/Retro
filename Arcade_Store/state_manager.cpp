@@ -1,20 +1,11 @@
 #include "state_manager.h"
-#include "user_profile.h"
-#include "menu.h"
-#include "about.h"
 
-#include <iostream>
-#include <unistd.h>         // Used for usleep()
-#include <stdlib.h>         // Used for system("clear")
-#include <algorithm>        // Used for converting string to upper/lower case
-
-using namespace std;
 
 State_Manager::State_Manager():User_Profile()           // Constructor: inherits from User_Profile for user info
 {
     if(User_Profile::get_is_accessed()){                // passed user validation
         this->set_is_running(true);
-        this->set_state(8);                 // start with the state of Menu (8)
+        this->set_state(8);                             // start with the state of Menu (8)
         this->run();
     }else{                                              // failed user validation
         cout << "\nAccess-> Denied";
@@ -55,7 +46,16 @@ void State_Manager::update(){
         case 3:
         break;
         case 6:
-        break;
+            user_page.set_id(User_Profile::get_user_id());
+            user_page.set_password(User_Profile::get_user_password());
+            if(!user_page.get_is_finished()){
+                user_page.update();
+            }else{
+                this->set_state(user_page.get_next_state());
+                user_page.set_is_finished(false);
+            }
+            break;
+
         case 7:
             system("clear");
             User_Profile::set_is_accessed(false);
@@ -72,7 +72,7 @@ void State_Manager::update(){
             break;
 
         case 9:
-            if(about.get_is_finished()==false){
+            if(!about.get_is_finished()){
                 about.update();
             }else{
                 this->set_state(about.get_next_state());

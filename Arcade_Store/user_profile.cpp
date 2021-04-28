@@ -1,10 +1,5 @@
 #include "user_profile.h"
 
-#include <iostream>
-#include <string>
-#include <stdlib.h>         // for system("clear")
-#include <fstream>          // input/output to file
-#include <algorithm>        // convert string to lower/upper case
 
 User_Profile::User_Profile()
 {

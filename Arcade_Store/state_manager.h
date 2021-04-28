@@ -2,8 +2,16 @@
 #define STATE_MANAGER_H
 
 #include "user_profile.h"
-#include "./menu.h"
-#include "./about.h"
+#include "menu.h"
+#include "about.h"
+#include "user_page.h"
+
+#include <iostream>
+#include <unistd.h>         // Used for usleep()
+#include <stdlib.h>         // Used for system("clear")
+#include <algorithm>        // Used for converting string to upper/lower case
+
+using namespace std;
 
 class State_Manager : public User_Profile
 {
@@ -13,6 +21,7 @@ private:
 
     Menu menu;
     About about;
+    User_Page user_page;
 
 public:
     State_Manager();

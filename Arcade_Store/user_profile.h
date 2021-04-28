@@ -1,6 +1,12 @@
 #ifndef USER_PROFILE_H
 #define USER_PROFILE_H
 
+#include <iostream>
+#include <string>
+#include <stdlib.h>         // for system("clear")
+#include <fstream>          // input/output to file
+#include <algorithm>        // convert string to lower/upper case
+
 #include <string>			//	Need both libs
 using namespace std;		//	to declare string type
 

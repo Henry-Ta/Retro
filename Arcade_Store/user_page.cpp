@@ -1,13 +1,27 @@
-#include "about.h"
+#include "user_page.h"
 
 
-About::About():State()
+User_Page::User_Page():State()
 {
-    //this->set_current_state("ABOUT");
+
 }
 
-void About::update(){
-    this->display();
+void User_Page::set_id(string s){
+    this->id = s;
+}
+string User_Page::get_id(){
+    return this->id;
+}
+
+void User_Page::set_password(string s){
+    this->password = s;
+}
+string User_Page::get_password(){
+    return this->password;
+}
+
+void User_Page::update(){
+    this->display(this->get_id(),this->get_password());
 
     int i;
     cout << "\n\t\t\tWhich number do you choose ? ";
@@ -24,13 +38,12 @@ void About::update(){
     }
 }
 
-void About::display(){
+void User_Page::display(string id, string password){        // get id, pass from User_Profile class to display
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│                         ABOUT                         │\n";
+    cout << "\t│                          USER                         │\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│                    Author : Henry Ta                  │\n";
-    cout << "\t│                Student ID : 100301469                 │\n";
-    cout << "\t│                    Github : Henry-Ta                  │\n";
+    cout << "\t                ♥ ID          : "+ id + "\n";
+    cout << "\t                ♥ Password    : "+ password + "\n";
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│       8. Menu         9. About           0. Exit      │\n";
     cout << "\t•-------------------------------------------------------•\n";
