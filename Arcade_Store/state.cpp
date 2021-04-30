@@ -9,7 +9,7 @@ State::State()              // base class for all other event states ( Menu, Abo
     this->set_next_state(-1);
     this->set_is_started(false);
     this->set_is_running(false);
-    this->set_is_over(false);
+    //this->set_is_over(false);
 
 }
 
@@ -41,12 +41,13 @@ bool State::get_is_running(){
     return this->is_running;
 }
 
+/*
 void State::set_is_over(bool b){
     this->is_over = b;
 }
 bool State::get_is_over(){
     return this->is_over;
-}
+}*/
 
 
 void State::update(){}

@@ -11,7 +11,7 @@ protected:
 
     bool    is_started      ;       // check whether game is started
     bool    is_running      ;       // check whether game is running
-    bool    is_over         ;       // check wheteher game is over
+    //bool    is_over         ;     // check wheteher game is over
 
 public:
     State();
@@ -31,8 +31,10 @@ public:
     void set_is_running(bool b);
     bool get_is_running();
 
+    /*
     void set_is_over(bool b);
     bool get_is_over();
+    */
 
     //void initiate();
     void update();

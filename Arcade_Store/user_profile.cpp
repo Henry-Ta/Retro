@@ -100,21 +100,24 @@ bool User_Profile::user_login(){
     cout << "\t•-------------------------------------------------------•\n";
 
     this->set_id_password();
-    bool valid_login;
+    bool valid_login=false;
 
     if(this->get_user_id().length()>0 && this->get_user_password().length()>0){     // id, pass not empty
         valid_login = this->user_validation(this->get_user_id(),this->get_user_password(),"user_data.txt");     // return true/false after checking id,pass with data in "user_data.txt"
         if(!valid_login){           // failed validation
-            system("clear");
+            //system("clear");
             cout << "Wrong Id / Password";
-            this->user_login();
+            this->user_login();         // keep looping until login correct
         }
-    }else{ 				// id,pass empty
+    }else{ 				// id,pass empty ( Uses cin to get id,pass so get rid of empty character)
         //system("clear");
         cout << "Id / Password empty";
         this->user_login();
     }
     return true;
+
+
+    //return valid_login;
 }
 
 bool User_Profile::user_signup(){
@@ -131,13 +134,12 @@ bool User_Profile::user_signup(){
     if(this->get_user_id().length()>0 && this->get_user_password().length()>0){			// if,pass not empty
         this->save_to_file(this->get_user_id(),this->get_user_password(),"user_data.txt");		// Save to file "user_data.txt"
         cout << "Signed Up Successfully !";
-        return true;
     }else{ 				// id,pass empty
         //system("clear");
         cout << "Id / Password empty";
-        this->user_signup();
+        this->user_signup();                // keep looping until sign up correct
     }
-    return false;
+    return true;
 }
 
 void User_Profile::save_to_file(string id, string passwd, string file_name){

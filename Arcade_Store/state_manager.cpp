@@ -13,7 +13,6 @@ State_Manager::State_Manager():User_Profile()           // Constructor: inherits
         this->set_state(-1);
         State_Manager();
     }
-
 }
 
 void State_Manager::set_is_running(bool s){
@@ -33,14 +32,15 @@ int State_Manager::get_state(){
 
 void State_Manager::update(){
     system("clear");
-    this->show_logo();
+    //this->show_logo();
+    User_Profile::show_logo();
+
     string id_upper = User_Profile::get_user_id();
     transform(id_upper.begin(), id_upper.end(), id_upper.begin(), ::toupper);       // convert user id to upper case for displaying
     cout << "\n\t"+id_upper+"(6)\t\t\t\t\tLog Out(7)\n";
 
     switch(this->get_state()){
         case 1:
-            //rock_paper_scissor.set_is_playing(true);
             this->load(1);
             break;
 
@@ -82,7 +82,7 @@ void State_Manager::load(int state_id){         // use id of state to run that s
 
             rock_paper_scissor.set_is_started(false);       //refresh attributes to default
             rock_paper_scissor.set_is_running(false);
-            rock_paper_scissor.set_is_over(false);
+            //rock_paper_scissor.set_is_over(false);
         }
         break;
 
@@ -124,7 +124,7 @@ void State_Manager::run(){
     };
 }
 
-void State_Manager::show_logo(){
+/*void State_Manager::show_logo(){
     cout<<"\n\t  _______  _______  _______  _______  ______   _______     \n";
     cout<<"\t (  ___  )(  ____ )(  ____ \\(  ___  )(  __  \\ (  ____ \\    \n";
     cout<<"\t | (   ) || (    )|| (    \\/| (   ) || (  \\  )| (    \\/    \n";
@@ -133,4 +133,4 @@ void State_Manager::show_logo(){
     cout<<"\t | (   ) || (\\ (   | |      | (   ) || |   ) || (          \n";
     cout<<"\t | )   ( || ) \\ \\__| (____/\\| )   ( || (__/  )| (____/\\    \n";
     cout<<"\t |/     \\||/   \\__/(_______/|/     \\|(______/ (_______/    \n";
-}
+}*/

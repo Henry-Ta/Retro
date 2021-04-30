@@ -17,8 +17,8 @@ using namespace std;
 class State_Manager : public User_Profile
 {
 private:
-    bool is_running;
-    int state;
+    bool is_running;                // check whether a specific state is running (Menu, Log Out, Game,..)
+    int state;                      // get id of state
 
     Menu menu;
     About about;
@@ -40,7 +40,7 @@ public:
     void load(int state_id);
     void exit();
 
-    void show_logo();
+    //void show_logo();
 };
 
 #endif // STATE_MANAGER_H
