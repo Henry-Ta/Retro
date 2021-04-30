@@ -40,20 +40,19 @@ void State_Manager::update(){
 
     switch(this->get_state()){
         case 1:
-        break;
+            //rock_paper_scissor.set_is_playing(true);
+            this->load(1);
+            break;
+
         case 2:
-        break;
+            break;
         case 3:
-        break;
+            break;
         case 6:
             user_page.set_id(User_Profile::get_user_id());
             user_page.set_password(User_Profile::get_user_password());
-            if(!user_page.get_is_finished()){
-                user_page.update();
-            }else{
-                this->set_state(user_page.get_next_state());
-                user_page.set_is_finished(false);
-            }
+
+            this->load(6);
             break;
 
         case 7:
@@ -63,22 +62,57 @@ void State_Manager::update(){
             break;
 
         case 8:
-            if(!menu.get_is_finished()){            // if (Menu) state didn't finish
-                menu.update();                      // keep updating
-            }else {                                                 // if (Menu) state finished
-                this->set_state(menu.get_next_state());             // update to the next chosen state
-                menu.set_is_finished(false);                        // reset flag to check state finished
-            }
+            this->load(8);
             break;
 
         case 9:
-            if(!about.get_is_finished()){
-                about.update();
-            }else{
-                this->set_state(about.get_next_state());
-                about.set_is_finished(false);
-            }
+            this->load(9);
             break;
+    }
+}
+
+void State_Manager::load(int state_id){         // use id of state to run that state
+    switch(state_id){
+    case 1:
+        if(!rock_paper_scissor.get_is_finished()){      // state is running
+            rock_paper_scissor.update();
+        }else{                                          // state finished
+            this->set_state(rock_paper_scissor.get_next_state());
+            rock_paper_scissor.set_is_finished(false);
+
+            rock_paper_scissor.set_is_started(false);       //refresh attributes to default
+            rock_paper_scissor.set_is_running(false);
+            rock_paper_scissor.set_is_over(false);
+        }
+        break;
+
+    case 6:
+        if(!user_page.get_is_finished()){
+            user_page.update();
+        }else{
+            this->set_state(user_page.get_next_state());
+            user_page.set_is_finished(false);
+        }
+        break;
+
+    case 8:
+        if(!menu.get_is_finished()){            // if (Menu) state didn't finish
+            menu.update();                      // keep updating
+        }else {                                                 // if (Menu) state finished
+            this->set_state(menu.get_next_state());             // update to the next chosen state
+            menu.set_is_finished(false);                        // reset flag to check state finished
+        }
+        break;
+
+    case 9:
+        if(!about.get_is_finished()){
+            about.update();
+        }else{
+            this->set_state(about.get_next_state());
+            about.set_is_finished(false);
+        }
+        break;
+
     }
 }
 

@@ -5,6 +5,7 @@
 #include "menu.h"
 #include "about.h"
 #include "user_page.h"
+#include "rock_paper_scissor.h"
 
 #include <iostream>
 #include <unistd.h>         // Used for usleep()
@@ -23,6 +24,8 @@ private:
     About about;
     User_Page user_page;
 
+    Rock_Paper_Scissor rock_paper_scissor;
+
 public:
     State_Manager();
 
@@ -34,7 +37,7 @@ public:
 
     void run();
     void update();
-    void load();
+    void load(int state_id);
     void exit();
 
     void show_logo();
