@@ -556,7 +556,8 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/menu.h \
 		../Arcade_Store/state.h \
 		../Arcade_Store/about.h \
-		../Arcade_Store/user_page.h
+		../Arcade_Store/user_page.h \
+		../Arcade_Store/rock_paper_scissor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arcade_Store/main.cpp
 
 menu.o: ../Arcade_Store/menu.cpp ../Arcade_Store/menu.h \
@@ -575,7 +576,8 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/menu.h \
 		../Arcade_Store/state.h \
 		../Arcade_Store/about.h \
-		../Arcade_Store/user_page.h
+		../Arcade_Store/user_page.h \
+		../Arcade_Store/rock_paper_scissor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state_manager.o ../Arcade_Store/state_manager.cpp
 
 user_page.o: ../Arcade_Store/user_page.cpp ../Arcade_Store/user_page.h \
