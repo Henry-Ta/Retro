@@ -8,6 +8,7 @@ SOURCES += \
         main.cpp \
         menu.cpp \
         rock_paper_scissor.cpp \
+        sort.cpp \
         state.cpp \
         state_manager.cpp \
         user_page.cpp \
@@ -17,6 +18,7 @@ HEADERS += \
     about.h \
     menu.h \
     rock_paper_scissor.h \
+    sort.h \
     state.h \
     state_manager.h \
     user_page.h \

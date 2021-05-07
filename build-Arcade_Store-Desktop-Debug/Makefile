@@ -56,6 +56,7 @@ SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
+		../Arcade_Store/sort.cpp \
 		../Arcade_Store/state.cpp \
 		../Arcade_Store/state_manager.cpp \
 		../Arcade_Store/user_page.cpp \
@@ -64,6 +65,7 @@ OBJECTS       = about.o \
 		main.o \
 		menu.o \
 		rock_paper_scissor.o \
+		sort.o \
 		state.o \
 		state_manager.o \
 		user_page.o \
@@ -207,6 +209,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../Arcade_Store/Arcade_Store.pro about.h \
 		menu.h \
 		rock_paper_scissor.h \
+		sort.h \
 		state.h \
 		state_manager.h \
 		user_page.h \
@@ -214,6 +217,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
+		../Arcade_Store/sort.cpp \
 		../Arcade_Store/state.cpp \
 		../Arcade_Store/state_manager.cpp \
 		../Arcade_Store/user_page.cpp \
@@ -557,7 +561,8 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/state.h \
 		../Arcade_Store/about.h \
 		../Arcade_Store/user_page.h \
-		../Arcade_Store/rock_paper_scissor.h
+		../Arcade_Store/rock_paper_scissor.h \
+		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arcade_Store/main.cpp
 
 menu.o: ../Arcade_Store/menu.cpp ../Arcade_Store/menu.h \
@@ -568,6 +573,10 @@ rock_paper_scissor.o: ../Arcade_Store/rock_paper_scissor.cpp ../Arcade_Store/roc
 		../Arcade_Store/state.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rock_paper_scissor.o ../Arcade_Store/rock_paper_scissor.cpp
 
+sort.o: ../Arcade_Store/sort.cpp ../Arcade_Store/sort.h \
+		../Arcade_Store/state.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sort.o ../Arcade_Store/sort.cpp
+
 state.o: ../Arcade_Store/state.cpp ../Arcade_Store/state.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state.o ../Arcade_Store/state.cpp
 
@@ -577,7 +586,8 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/state.h \
 		../Arcade_Store/about.h \
 		../Arcade_Store/user_page.h \
-		../Arcade_Store/rock_paper_scissor.h
+		../Arcade_Store/rock_paper_scissor.h \
+		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state_manager.o ../Arcade_Store/state_manager.cpp
 
 user_page.o: ../Arcade_Store/user_page.cpp ../Arcade_Store/user_page.h \

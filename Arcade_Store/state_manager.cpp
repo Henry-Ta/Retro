@@ -45,9 +45,12 @@ void State_Manager::update(){
             break;
 
         case 2:
+            this->load(2);
             break;
+
         case 3:
             break;
+
         case 6:
             user_page.set_id(User_Profile::get_user_id());
             user_page.set_password(User_Profile::get_user_password());
@@ -83,6 +86,18 @@ void State_Manager::load(int state_id){         // use id of state to run that s
             rock_paper_scissor.set_is_started(false);       //refresh attributes to default
             rock_paper_scissor.set_is_running(false);
             //rock_paper_scissor.set_is_over(false);
+        }
+        break;
+
+    case 2:
+        if(!sort.get_is_finished()){      // state is running
+            sort.update();
+        }else{                                          // state finished
+            this->set_state(sort.get_next_state());
+            sort.set_is_finished(false);
+
+            sort.set_is_started(false);       //refresh attributes to default
+            sort.set_is_running(false);
         }
         break;
 

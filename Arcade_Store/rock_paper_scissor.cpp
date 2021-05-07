@@ -132,17 +132,17 @@ int Rock_Paper_Scissor::get_computer_choice(){
 
 void Rock_Paper_Scissor::determine_winner(int user_choice, int computer_choice){
     if(user_choice == 1 && computer_choice == 2){
-        cout << "\n\t\t-> Computer WIN ! Paper wraps Rock\n";
+        cout << "\n\t\t-> Computer WIN ! PAPER wraps ROCK\n";
     }else if(user_choice == 2 && computer_choice == 3){
-        cout << "\n\t\t-> Computer WIN ! Scissor cuts Paper\n";
+        cout << "\n\t\t-> Computer WIN ! SCISSOR cuts PAPER\n";
     }else if(user_choice == 3 && computer_choice == 1){
-        cout << "\n\t\t-> Computer WIN ! Rock smashes Scissor\n";
+        cout << "\n\t\t-> Computer WIN ! ROCK smashes SCISSOR\n";
     }else if(user_choice == 1 && computer_choice == 3){
-        cout << "\n\t\t-> YOU WIN ! Rock smashes Scissor\n";
+        cout << "\n\t\t-> YOU WIN ! ROCK smashes SCISSOR\n";
     }else if(user_choice == 2 && computer_choice == 1){
-        cout << "\n\t\t-> YOU WIN ! Paper wraps Rock\n";
+        cout << "\n\t\t-> YOU WIN ! PAPER wraps ROCK\n";
     }else if(user_choice == 3 && computer_choice == 2){
-        cout << "\n\t\t-> YOU WIN ! Scissor cuts Paper\n";
+        cout << "\n\t\t-> YOU WIN ! SCISSOR cuts PAPER\n";
     }else{
         cout << "\n\t\t-> TIE\n";
     }
