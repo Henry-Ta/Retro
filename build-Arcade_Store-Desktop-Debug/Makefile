@@ -53,6 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Arcade_Store/about.cpp \
+		../Arcade_Store/bubble_sort.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
@@ -62,6 +63,7 @@ SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/user_page.cpp \
 		../Arcade_Store/user_profile.cpp 
 OBJECTS       = about.o \
+		bubble_sort.o \
 		main.o \
 		menu.o \
 		rock_paper_scissor.o \
@@ -207,6 +209,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../Arcade_Store/Arcade_Store.pro about.h \
+		bubble_sort.h \
 		menu.h \
 		rock_paper_scissor.h \
 		sort.h \
@@ -214,6 +217,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		state_manager.h \
 		user_page.h \
 		user_profile.h ../Arcade_Store/about.cpp \
+		../Arcade_Store/bubble_sort.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
@@ -555,6 +559,9 @@ about.o: ../Arcade_Store/about.cpp ../Arcade_Store/about.h \
 		../Arcade_Store/state.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o about.o ../Arcade_Store/about.cpp
 
+bubble_sort.o: ../Arcade_Store/bubble_sort.cpp ../Arcade_Store/bubble_sort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bubble_sort.o ../Arcade_Store/bubble_sort.cpp
+
 main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/user_profile.h \
 		../Arcade_Store/menu.h \
@@ -562,7 +569,8 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/about.h \
 		../Arcade_Store/user_page.h \
 		../Arcade_Store/rock_paper_scissor.h \
-		../Arcade_Store/sort.h
+		../Arcade_Store/sort.h \
+		../Arcade_Store/bubble_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arcade_Store/main.cpp
 
 menu.o: ../Arcade_Store/menu.cpp ../Arcade_Store/menu.h \
@@ -574,7 +582,8 @@ rock_paper_scissor.o: ../Arcade_Store/rock_paper_scissor.cpp ../Arcade_Store/roc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rock_paper_scissor.o ../Arcade_Store/rock_paper_scissor.cpp
 
 sort.o: ../Arcade_Store/sort.cpp ../Arcade_Store/sort.h \
-		../Arcade_Store/state.h
+		../Arcade_Store/state.h \
+		../Arcade_Store/bubble_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sort.o ../Arcade_Store/sort.cpp
 
 state.o: ../Arcade_Store/state.cpp ../Arcade_Store/state.h
@@ -587,7 +596,8 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/about.h \
 		../Arcade_Store/user_page.h \
 		../Arcade_Store/rock_paper_scissor.h \
-		../Arcade_Store/sort.h
+		../Arcade_Store/sort.h \
+		../Arcade_Store/bubble_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state_manager.o ../Arcade_Store/state_manager.cpp
 
 user_page.o: ../Arcade_Store/user_page.cpp ../Arcade_Store/user_page.h \

@@ -5,6 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         about.cpp \
+        bubble_sort.cpp \
         main.cpp \
         menu.cpp \
         rock_paper_scissor.cpp \
@@ -16,6 +17,7 @@ SOURCES += \
 
 HEADERS += \
     about.h \
+    bubble_sort.h \
     menu.h \
     rock_paper_scissor.h \
     sort.h \

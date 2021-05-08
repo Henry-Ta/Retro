@@ -135,7 +135,7 @@ void State_Manager::run(){
     while(this->get_is_running()){
         system("clear");
         this->update();
-        usleep(1000);               // delaying system to display animation
+        //usleep(1000000);               // delaying system to display animation
     };
 }
 

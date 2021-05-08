@@ -2,9 +2,13 @@
 #define SORT_H
 
 #include "state.h"
+#include "bubble_sort.h"
 
-class Sort : public State
+class Sort : public State, public Bubble_Sort
 {
+private:
+    Bubble_Sort bubble_sort;
+
 public:
     Sort();
 

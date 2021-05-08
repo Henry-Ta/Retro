@@ -88,7 +88,25 @@ void Sort::run_game_body(){
 void Sort::run_sort(int i){
     switch(i){
         case 1:
-        cout << "This is bubble sort";
+
+        int arr[] = {6, 5, 4, 2, 3, 1, 7, 8, 12, 9, 10, 11, 15, 13, 14};
+        int n = sizeof(arr)/sizeof(arr[0]);
+
+        cout << "\nOriginal\n";
+        bubble_sort.visualize_sort(arr,n);
+
+        /*
+        cout << "Original Array: \n";
+        bubble_sort.print_array(arr,n);
+        */
+
+        bubble_sort.run_sort(arr, n);
+
+        /*
+        cout<<"\nSorted array: \n";
+        bubble_sort.print_array(arr, n);
+        */
+
         break;
     }
 }
@@ -98,6 +116,8 @@ int Sort::get_computer_choice(){
     int comp_choice = rand() % 3 + 1;
     return comp_choice;
 }
+
+
 
 void Sort::display(){
     cout << "\t•-------------------------------------------------------•\n";
