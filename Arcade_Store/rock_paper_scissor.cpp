@@ -76,7 +76,7 @@ void Rock_Paper_Scissor::get_user_selection(){
     }else if(i==0){
         exit(0);
     }else{						// not match any option
-        cout << "Wrong input, please try again !";
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
         this->get_user_selection();
     }
 }
@@ -97,7 +97,7 @@ void Rock_Paper_Scissor::get_replay_exit(){
             this->set_is_finished(true);    // pointing to the new state but same game (state) id
         }
     }else{
-        cout << "Wrong Input, please try again";
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
         this->get_replay_exit();
     }
 
@@ -118,7 +118,7 @@ void Rock_Paper_Scissor::run_game_body(){
         //---------------------------------------GAME FINISHED
         this->set_is_running(false);        // When game is finished, turn on flag to move to replay_exit event
     }else{
-        cout << "Wrong input, please try again";
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
         this->run_game_body();
     }
 

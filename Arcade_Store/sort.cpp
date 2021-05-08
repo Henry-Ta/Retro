@@ -1,6 +1,7 @@
 #include "sort.h"
 
 #include <iostream>
+#include <algorithm>        // random_shuffle(array, array + array_size)
 using namespace std;
 
 Sort::Sort():State()
@@ -44,14 +45,14 @@ void Sort::get_user_selection(){
     }else if(i==0){
         exit(0);
     }else{						// not match any option
-        cout << "Wrong input, please try again !";
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
         this->get_user_selection();
     }
 }
 
 void Sort::get_replay_exit(){
     int game_replay;
-    cout << "\n\t\tDo you want to replay or exit ? (Replay-1|Exit-0) ";
+    cout << "\t\tDo you want to replay or exit ? (Replay-1|Exit-0) ";
     cin >> game_replay;
     if(game_replay==1 || game_replay==0){
         if(game_replay==0){             // exit game
@@ -62,7 +63,7 @@ void Sort::get_replay_exit(){
             this->set_is_finished(true);    // pointing to the new state but same game (state) id
         }
     }else{
-        cout << "Wrong Input, please try again";
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
         this->get_replay_exit();
     }
 }
@@ -70,7 +71,7 @@ void Sort::get_replay_exit(){
 void Sort::run_game_body(){
     int user_choice;
     cout << "\n\t\t\t\t1. Bubble Sort";
-    cout << "\n\t\t\tEnter your choice: ";
+    cout << "\n\n\t\t\tEnter your choice: ";
     cin >> user_choice;
 
     if(user_choice==1){
@@ -79,7 +80,7 @@ void Sort::run_game_body(){
         //---------------------------------------GAME FINISHED
         this->set_is_running(false);        // When game is finished, turn on flag to move to replay_exit event
     }else{
-        cout << "Wrong input, please try again";
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
         this->run_game_body();
     }
 
@@ -89,23 +90,29 @@ void Sort::run_sort(int i){
     switch(i){
         case 1:
 
-        int arr[] = {6, 5, 4, 2, 3, 1, 7, 8, 12, 9, 10, 11, 15, 13, 14};
-        int n = sizeof(arr)/sizeof(arr[0]);
+        int numbers_of_elements;
+        cout << "\n\t\tHow many elements in array to sort (2-14)? ";
+        cin >> numbers_of_elements;
+        if(numbers_of_elements>=2 && numbers_of_elements<=14){
 
-        cout << "\nOriginal\n";
-        bubble_sort.visualize_sort(arr,n);
+            //int n = sizeof(arr)/sizeof(arr[0]);       // get size of array
 
-        /*
-        cout << "Original Array: \n";
-        bubble_sort.print_array(arr,n);
-        */
+            int array[numbers_of_elements];
+            for (int i=0; i < numbers_of_elements;i++)
+            {
+                array[i] = i+1;                         // array starts from 0, but can't display 0 in visualization so +1 for value
+            }
 
-        bubble_sort.run_sort(arr, n);
+            //bubble_sort.print_array(array,numbers_of_elements);
 
-        /*
-        cout<<"\nSorted array: \n";
-        bubble_sort.print_array(arr, n);
-        */
+            random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
+
+            bubble_sort.run_sort(array, numbers_of_elements);
+
+        }else{
+            cout << "\n☠ Wrong input, please try again ☠\n\n";
+            this->run_sort(1);
+        }
 
         break;
     }

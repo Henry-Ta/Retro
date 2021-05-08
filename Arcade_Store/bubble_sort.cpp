@@ -31,12 +31,14 @@ void Bubble_Sort::run_sort(int array[], int size) {
         for(int j=0;j<size-i-1;j++)
         {
             system("clear");
+            cout << "\n\t\t\t\tBUBBLE SORT\n\n";
             cout << "Original\n";
             this->visualize_sort(original_array,size);
 
             count_step++;
             cout << "Pass " << count_step;
             cout << " - (" << array[j] << ", "<< array[j+1] <<") ";
+
             //checking if previous value is
             //grater than next one or not
             if(array[j]>array[j+1])
@@ -76,91 +78,49 @@ void Bubble_Sort::visualize_sort(int array[], int size){
         switch(array[i]){
 
             case 1:
-            visualization+="\t\t\t 1 ----\n";
+            visualization+="\t\t\t 1 ─\n";
             break;
             case 2:
-            visualization+="\t\t\t 2 ------\n";
+            visualization+="\t\t\t 2 ──\n";
             break;
             case 3:
-            visualization+="\t\t\t 3 --------\n";
+            visualization+="\t\t\t 3 ───\n";
             break;
             case 4:
-            visualization+="\t\t\t 4 ----------\n";
+            visualization+="\t\t\t 4 ────\n";
             break;
             case 5:
-            visualization+="\t\t\t 5 ------------\n";
+            visualization+="\t\t\t 5 ─────\n";
             break;
             case 6:
-            visualization+="\t\t\t 6 --------------\n";
+            visualization+="\t\t\t 6 ──────\n";
             break;
             case 7:
-            visualization+="\t\t\t 7 ----------------\n";
+            visualization+="\t\t\t 7 ───────\n";
             break;
             case 8:
-            visualization+="\t\t\t 8 ------------------\n";
+            visualization+="\t\t\t 8 ────────\n";
             break;
             case 9:
-            visualization+="\t\t\t 9 --------------------\n";
+            visualization+="\t\t\t 9 ─────────\n";
             break;
             case 10:
-            visualization+="\t\t\t10 ----------------------\n";
+            visualization+="\t\t\t10 ──────────\n";
             break;
             case 11:
-            visualization+="\t\t\t11 ------------------------\n";
+            visualization+="\t\t\t11 ───────────\n";
             break;
             case 12:
-            visualization+="\t\t\t12 --------------------------\n";
+            visualization+="\t\t\t12 ────────────\n";
             break;
             case 13:
-            visualization+="\t\t\t13 ----------------------------\n";
+            visualization+="\t\t\t13 ─────────────\n";
             break;
             case 14:
-            visualization+="\t\t\t14 ------------------------------\n";
+            visualization+="\t\t\t14 ──────────────\n";
             break;
-            case 15:
-            visualization+="\t\t\t15 --------------------------------\n";
-            break;
-            case 16:
-            visualization+="\t\t\t16 ----------------------------------\n";
-            break;
-            case 17:
-            visualization+="\t\t\t17 ------------------------------------\n";
-            break;
-            case 18:
-            visualization+="\t\t\t18 --------------------------------------\n";
-            break;
-            case 19:
-            visualization+="\t\t\t19 ----------------------------------------\n";
-            break;
-            case 20:
-            visualization+="\t\t\t20 ------------------------------------------\n";
-            break;
-            /*
-            case 1:
-            visualization+="\t\t\t•\n";
-            break;
-            case 2:
-            visualization+="\t\t\t•••\n";
-            break;
-            case 3:
-            visualization+="\t\t\t•••••\n";
-            break;
-            case 4:
-            visualization+="\t\t\t•••••••\n";
-            break;
-            case 5:
-            visualization+="\t\t\t•••••••••\n";
-            break;
-            case 6:
-            visualization+="\t\t\t•••••••••••\n";
-            break;
-            case 7:
-            visualization+="\t\t\t•••••••••••••\n";
-            break;
-            */
         }
     }
 
     cout << visualization << "\n\n";
-    //system("clear");
 }
