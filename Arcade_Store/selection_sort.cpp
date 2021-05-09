@@ -1,28 +1,32 @@
-#include "bubble_sort.h"
+#include "selection_sort.h"
 
 #include <iostream>
-
 #include <unistd.h>         // Used for usleep()
 
 using namespace std;
 
-Bubble_Sort::Bubble_Sort():Sort()
+Selection_Sort::Selection_Sort():Sort()
 {
 
 }
 
-// A function to implement bubble sort
-void Bubble_Sort::run_sort(int array[], int size) {
+// A function to implement Selection sort
+void Selection_Sort::run_sort(int array[], int size) {
     int count_step = 0;
     int original_array[size];
+    bool j_done = false;
 
-    copy( array, array+size, original_array );      // copy array, syntax: copy(source_array, source_array + source_array_size, destination_array)
+    copy( array, array+size, original_array );      // copy array, syntax copy(source_array, source_array + source_array_size, destination_array)
 
-    for(int i=0;i<size-1;i++){
-        for(int j=0;j<size-i-1;j++)
-        {
+    for (int i = 0; i < size-1; i++)                // One by one move boundary of unsorted subarray
+    {
+
+        int min_number = i;         // Find the minimum element in unsorted array
+
+        for (int j = i+1; j < size; j++){
+
             system("clear");
-            cout << "\n\t\t\t\tBUBBLE SORT\n\n";
+            cout << "\n\t\t\t\tSELECTION SORT\n\n";
             cout << "Original\n";
 
             //this->visualize_sort(original_array,size);
@@ -30,19 +34,36 @@ void Bubble_Sort::run_sort(int array[], int size) {
 
             count_step++;
             cout << "Pass " << count_step;
-            cout << " - (" << array[j] << ", "<< array[j+1] <<") ";
+            cout << " - (Min: " << array[min_number] << ", Check: "<< array[j] <<") ";
 
-
-            if(array[j]>array[j+1])                             //checking if previous value is grater than next one or not
-            {             
-                /*int temp=array[j];            // Swap if the next number is smaller than the current number
-                array[j]=array[j+1];
-                array[j+1]=temp;*/
-
-                //this->swap(&array[j],&array[j+1]);
-                Sort::swap(&array[j],&array[j+1]);
-                cout << "<- SWAP -> ("<<array[j]<<", "<<array[j+1]<<")";
+            if (array[j] < array[min_number]){          // Swap current min with the new min if found out
+                min_number = j;
+                cout << " - UPDATE (New Min: "<<array[min_number]<<")";
             }
+
+            cout << endl;
+            //this->visualize_sort(array,size);
+            Sort::visualize_sort(array,size);
+            usleep(500000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+            if(j==size-1)                   // turn on flag to display the final finished array
+                j_done = true;
+
+        }
+        cout << "-> SWAP (" << array[min_number] <<", "<< array[i]<<")";        // NEED TO UPDATE
+
+        Sort::swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element
+
+        if(i==size-2 && j_done){        // to display the final finished array, when everything is done
+            system("clear");
+            cout << "\n\t\t\t\tSELECTION SORT\n\n";
+            cout << "Original\n";
+
+            //this->visualize_sort(original_array,size);
+            Sort::visualize_sort(original_array,size);
+
+            count_step++;
+            cout << "Pass " << count_step << " - Finish ";
 
             cout << endl;
             //this->visualize_sort(array,size);
@@ -52,22 +73,24 @@ void Bubble_Sort::run_sort(int array[], int size) {
     }
 }
 
+
 /*
-void Bubble_Sort::swap(int *num1, int *num2)
+void Selection_Sort::swap(int *num1, int *num2)
 {
     int temp = *num1;
     *num1 = *num2;
     *num2 = temp;
 }
 
-void Bubble_Sort::print_array(int array[], int size)
+//Function to print an array
+void Selection_Sort::print_array(int array[], int size)
 {
     for (int i = 0; i < size; i++)
         cout << array[i] << " ";
     cout << endl;
 }
 
-void Bubble_Sort::visualize_sort(int array[], int size){
+void Selection_Sort::visualize_sort(int array[], int size){
     string visualization;
     for (int i = 0; i < size; i++){
         switch(array[i]){

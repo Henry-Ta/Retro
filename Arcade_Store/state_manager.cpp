@@ -90,14 +90,14 @@ void State_Manager::load(int state_id){         // use id of state to run that s
         break;
 
     case 2:
-        if(!sort.get_is_finished()){      // state is running
-            sort.update();
+        if(!sort_manager.get_is_finished()){      // state is running
+            sort_manager.update();
         }else{                                          // state finished
-            this->set_state(sort.get_next_state());
-            sort.set_is_finished(false);
+            this->set_state(sort_manager.get_next_state());
+            sort_manager.set_is_finished(false);
 
-            sort.set_is_started(false);       //refresh attributes to default
-            sort.set_is_running(false);
+            sort_manager.set_is_started(false);       //refresh attributes to default
+            sort_manager.set_is_running(false);
         }
         break;
 

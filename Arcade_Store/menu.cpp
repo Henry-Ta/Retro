@@ -3,12 +3,16 @@
 
 Menu::Menu():State()
 {
-    //this->set_current_state("MENU");
+
 }
 
 void Menu::update(){
     this->display();
 
+    this->get_user_selection();
+}
+
+void Menu::get_user_selection(){
     int i;
     cout << "\n\t\t\tWhich number do you choose? ";
     cin >> i;

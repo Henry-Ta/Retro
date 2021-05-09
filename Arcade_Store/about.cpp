@@ -9,6 +9,11 @@ About::About():State()
 void About::update(){
     this->display();
 
+    this->get_user_selection();
+
+}
+
+void About::get_user_selection(){
     int i;
     cout << "\n\t\t\tWhich number do you choose? ";
     cin >> i;

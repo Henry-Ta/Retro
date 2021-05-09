@@ -14,6 +14,8 @@ public:
 
     void update();
     void display();
+
+    void get_user_selection();
 };
 
 #endif // MENU_H
