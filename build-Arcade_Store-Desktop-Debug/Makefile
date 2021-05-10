@@ -53,9 +53,12 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Arcade_Store/about.cpp \
+		../Arcade_Store/binary_insertion_sort.cpp \
 		../Arcade_Store/bubble_sort.cpp \
+		../Arcade_Store/insertion_sort.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
+		../Arcade_Store/quick_sort.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
 		../Arcade_Store/selection_sort.cpp \
 		../Arcade_Store/sort.cpp \
@@ -65,9 +68,12 @@ SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/user_page.cpp \
 		../Arcade_Store/user_profile.cpp 
 OBJECTS       = about.o \
+		binary_insertion_sort.o \
 		bubble_sort.o \
+		insertion_sort.o \
 		main.o \
 		menu.o \
+		quick_sort.o \
 		rock_paper_scissor.o \
 		selection_sort.o \
 		sort.o \
@@ -213,8 +219,11 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../Arcade_Store/Arcade_Store.pro about.h \
+		binary_insertion_sort.h \
 		bubble_sort.h \
+		insertion_sort.h \
 		menu.h \
+		quick_sort.h \
 		rock_paper_scissor.h \
 		selection_sort.h \
 		sort.h \
@@ -223,9 +232,12 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		state_manager.h \
 		user_page.h \
 		user_profile.h ../Arcade_Store/about.cpp \
+		../Arcade_Store/binary_insertion_sort.cpp \
 		../Arcade_Store/bubble_sort.cpp \
+		../Arcade_Store/insertion_sort.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
+		../Arcade_Store/quick_sort.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
 		../Arcade_Store/selection_sort.cpp \
 		../Arcade_Store/sort.cpp \
@@ -567,8 +579,17 @@ about.o: ../Arcade_Store/about.cpp ../Arcade_Store/about.h \
 		../Arcade_Store/state.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o about.o ../Arcade_Store/about.cpp
 
-bubble_sort.o: ../Arcade_Store/bubble_sort.cpp ../Arcade_Store/bubble_sort.h
+binary_insertion_sort.o: ../Arcade_Store/binary_insertion_sort.cpp ../Arcade_Store/binary_insertion_sort.h \
+		../Arcade_Store/sort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o binary_insertion_sort.o ../Arcade_Store/binary_insertion_sort.cpp
+
+bubble_sort.o: ../Arcade_Store/bubble_sort.cpp ../Arcade_Store/bubble_sort.h \
+		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bubble_sort.o ../Arcade_Store/bubble_sort.cpp
+
+insertion_sort.o: ../Arcade_Store/insertion_sort.cpp ../Arcade_Store/insertion_sort.h \
+		../Arcade_Store/sort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o insertion_sort.o ../Arcade_Store/insertion_sort.cpp
 
 main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/user_profile.h \
@@ -579,13 +600,20 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/rock_paper_scissor.h \
 		../Arcade_Store/sort_manager.h \
 		../Arcade_Store/bubble_sort.h \
+		../Arcade_Store/sort.h \
 		../Arcade_Store/selection_sort.h \
-		../Arcade_Store/sort.h
+		../Arcade_Store/insertion_sort.h \
+		../Arcade_Store/binary_insertion_sort.h \
+		../Arcade_Store/quick_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arcade_Store/main.cpp
 
 menu.o: ../Arcade_Store/menu.cpp ../Arcade_Store/menu.h \
 		../Arcade_Store/state.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o ../Arcade_Store/menu.cpp
+
+quick_sort.o: ../Arcade_Store/quick_sort.cpp ../Arcade_Store/quick_sort.h \
+		../Arcade_Store/sort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o quick_sort.o ../Arcade_Store/quick_sort.cpp
 
 rock_paper_scissor.o: ../Arcade_Store/rock_paper_scissor.cpp ../Arcade_Store/rock_paper_scissor.h \
 		../Arcade_Store/state.h
@@ -601,8 +629,11 @@ sort.o: ../Arcade_Store/sort.cpp ../Arcade_Store/sort.h
 sort_manager.o: ../Arcade_Store/sort_manager.cpp ../Arcade_Store/sort_manager.h \
 		../Arcade_Store/state.h \
 		../Arcade_Store/bubble_sort.h \
+		../Arcade_Store/sort.h \
 		../Arcade_Store/selection_sort.h \
-		../Arcade_Store/sort.h
+		../Arcade_Store/insertion_sort.h \
+		../Arcade_Store/binary_insertion_sort.h \
+		../Arcade_Store/quick_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sort_manager.o ../Arcade_Store/sort_manager.cpp
 
 state.o: ../Arcade_Store/state.cpp ../Arcade_Store/state.h
@@ -617,8 +648,11 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/rock_paper_scissor.h \
 		../Arcade_Store/sort_manager.h \
 		../Arcade_Store/bubble_sort.h \
+		../Arcade_Store/sort.h \
 		../Arcade_Store/selection_sort.h \
-		../Arcade_Store/sort.h
+		../Arcade_Store/insertion_sort.h \
+		../Arcade_Store/binary_insertion_sort.h \
+		../Arcade_Store/quick_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state_manager.o ../Arcade_Store/state_manager.cpp
 
 user_page.o: ../Arcade_Store/user_page.cpp ../Arcade_Store/user_page.h \

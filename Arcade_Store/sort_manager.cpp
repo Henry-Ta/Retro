@@ -54,12 +54,16 @@ void Sort_Manager::get_replay_exit(){
 
 void Sort_Manager::run_game_body(){
     int user_choice;
-    cout << "\n\t\t\t\t1. Bubble Sort";
-    cout << "\n\t\t\t\t2. Selection Sort";
-    cout << "\n\n\t\t\tEnter your choice: ";
+    cout << "\n\t\t\t     1. Bubble Sort";
+    cout << "\n\t\t\t     2. Selection Sort";
+    cout << "\n\t\t\t     3. Insertion Sort";
+    cout << "\n\t\t\t     4. Binary Insertion Sort";
+    cout << "\n\t\t\t     5. Quick Sort";
+    cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
-    if(user_choice==1 || user_choice==2){
+    if(user_choice == 1 || user_choice == 2 || user_choice == 3 ||
+            user_choice == 4 || user_choice == 5){
         this->run_sort(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -72,7 +76,63 @@ void Sort_Manager::run_game_body(){
 }
 
 void Sort_Manager::run_sort(int i){
-    int numbers_of_elements=-1;
+    int numbers_of_elements;
+    cout << "\n\t\tHow many elements in array to sort (2-14)? ";
+    cin >> numbers_of_elements;
+    if(numbers_of_elements>=2 && numbers_of_elements<=14){
+
+        int array[numbers_of_elements];
+        for (int i=0; i < numbers_of_elements;i++)
+        {
+            array[i] = i+1;                         // array starts from 0, but can't display 0 in visualization so +1 for value
+        }
+
+        random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
+
+        switch(i){
+        case 1:
+            bubble_sort.run_sort(array, numbers_of_elements);
+            break;
+        case 2:
+            selection_sort.run_sort(array, numbers_of_elements);
+            break;
+        case 3:
+            insertion_sort.run_sort(array, numbers_of_elements);
+            break;
+        case 4:
+            binary_insertion_sort.run_sort(array, numbers_of_elements);
+            break;
+        case 5:
+            int original_array[numbers_of_elements];                    // make a copy of original array
+            copy( array, array+numbers_of_elements, original_array );   // to display
+
+            quick_sort.run_sort(array, original_array, numbers_of_elements, 0, numbers_of_elements-1);
+            break;
+        }
+
+    }else{
+        cout << "\n☠ Wrong input, please try again ☠\n\n";
+        switch(i){
+        case 1:
+            this->run_sort(1);
+            break;
+        case 2:
+            this->run_sort(2);
+            break;
+        case 3:
+            this->run_sort(3);
+            break;
+        case 4:
+            this->run_sort(4);
+            break;
+        case 5:
+            this->run_sort(5);
+            break;
+        }
+    }
+
+    /*
+    int numbers_of_elements=-1;         // initiate and refresh user choice everytime we run sort
     switch(i){
         case 1:
 
@@ -107,8 +167,6 @@ void Sort_Manager::run_sort(int i){
             cin >> numbers_of_elements;
             if(numbers_of_elements>=2 && numbers_of_elements<=14){
 
-                //int n = sizeof(arr)/sizeof(arr[0]);       // get size of array
-
                 int array[numbers_of_elements];
                 for (int i=0; i < numbers_of_elements;i++)
                 {
@@ -125,12 +183,37 @@ void Sort_Manager::run_sort(int i){
             }
 
             break;
-    }
+
+        case 3:
+
+            cout << "\n\t\tHow many elements in array to sort (2-14)? ";
+            cin >> numbers_of_elements;
+            if(numbers_of_elements>=2 && numbers_of_elements<=14){
+
+                int array[numbers_of_elements];
+                for (int i=0; i < numbers_of_elements;i++)
+                {
+                    array[i] = i+1;                         // array starts from 0, but can't display 0 in visualization so +1 for value
+                }
+
+                random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
+
+                selection_sort.run_sort(array, numbers_of_elements);
+
+            }else{
+                cout << "\n☠ Wrong input, please try again ☠\n\n";
+                this->run_sort(3);
+            }
+
+            break;
+
+    }*/
+
 }
 
 void Sort_Manager::display(){
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│                  SORTING VISUALISER                   │\n";
+    cout << "\t│                   SORTING VISUALISER                  │\n";
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│       8. Menu         9. About           0. Exit      │\n";
     cout << "\t•-------------------------------------------------------•\n";

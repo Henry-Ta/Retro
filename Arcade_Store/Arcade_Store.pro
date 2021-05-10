@@ -5,9 +5,12 @@ CONFIG -= qt
 
 SOURCES += \
         about.cpp \
+        binary_insertion_sort.cpp \
         bubble_sort.cpp \
+        insertion_sort.cpp \
         main.cpp \
         menu.cpp \
+        quick_sort.cpp \
         rock_paper_scissor.cpp \
         selection_sort.cpp \
         sort.cpp \
@@ -19,8 +22,11 @@ SOURCES += \
 
 HEADERS += \
     about.h \
+    binary_insertion_sort.h \
     bubble_sort.h \
+    insertion_sort.h \
     menu.h \
+    quick_sort.h \
     rock_paper_scissor.h \
     selection_sort.h \
     sort.h \

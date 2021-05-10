@@ -26,7 +26,7 @@ void Bubble_Sort::run_sort(int array[], int size) {
             cout << "Original\n";
 
             //this->visualize_sort(original_array,size);
-            Sort::visualize_sort(original_array,size);
+            this->visualize_sort(original_array,size);
 
             count_step++;
             cout << "Pass " << count_step;
@@ -46,8 +46,8 @@ void Bubble_Sort::run_sort(int array[], int size) {
 
             cout << endl;
             //this->visualize_sort(array,size);
-            Sort::visualize_sort(array,size);
-            usleep(500000);               // delaying system 0.5s (0.5x1000000) to display animation
+            this->visualize_sort(array,size);
+            usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
         }
     }
 }

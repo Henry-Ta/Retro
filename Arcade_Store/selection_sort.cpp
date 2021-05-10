@@ -14,7 +14,6 @@ Selection_Sort::Selection_Sort():Sort()
 void Selection_Sort::run_sort(int array[], int size) {
     int count_step = 0;
     int original_array[size];
-    bool j_done = false;
 
     copy( array, array+size, original_array );      // copy array, syntax copy(source_array, source_array + source_array_size, destination_array)
 
@@ -30,7 +29,7 @@ void Selection_Sort::run_sort(int array[], int size) {
             cout << "Original\n";
 
             //this->visualize_sort(original_array,size);
-            Sort::visualize_sort(original_array,size);
+            this->visualize_sort(original_array,size);
 
             count_step++;
             cout << "Pass " << count_step;
@@ -43,33 +42,28 @@ void Selection_Sort::run_sort(int array[], int size) {
 
             cout << endl;
             //this->visualize_sort(array,size);
-            Sort::visualize_sort(array,size);
-            usleep(500000);               // delaying system 0.5s (0.5x1000000) to display animation
-
-            if(j==size-1)                   // turn on flag to display the final finished array
-                j_done = true;
+            this->visualize_sort(array,size);
+            usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
 
         }
         cout << "-> SWAP (" << array[min_number] <<", "<< array[i]<<")";        // NEED TO UPDATE
 
-        Sort::swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element
+        this->swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element
 
-        if(i==size-2 && j_done){        // to display the final finished array, when everything is done
-            system("clear");
-            cout << "\n\t\t\t\tSELECTION SORT\n\n";
-            cout << "Original\n";
+        system("clear");
+        cout << "\n\t\t\t\tSELECTION SORT\n\n";
+        cout << "Original\n";
 
-            //this->visualize_sort(original_array,size);
-            Sort::visualize_sort(original_array,size);
+        //this->visualize_sort(original_array,size);
+        this->visualize_sort(original_array,size);
 
-            count_step++;
-            cout << "Pass " << count_step << " - Finish ";
+        count_step++;
+        cout << "Pass " << count_step;
 
-            cout << endl;
-            //this->visualize_sort(array,size);
-            Sort::visualize_sort(array,size);
-            usleep(500000);               // delaying system 0.5s (0.5x1000000) to display animation
-        }
+        cout << endl;
+        //this->visualize_sort(array,size);
+        this->visualize_sort(array,size);
+        usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
     }
 }
 

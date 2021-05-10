@@ -33,7 +33,7 @@ void Menu::display(){
     cout << "\t│                       MAIN MENU                       │\n";
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│                 1. Rock-Paper-Scissor                 │\n";
-    cout << "\t│                 2. Sort                               │\n";
+    cout << "\t│                 2. Sorting Visualizer                 │\n";
     cout << "\t│                 3. Game 3                             │\n";
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│       8. Menu         9. About           0. Exit      │\n";
