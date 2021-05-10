@@ -21,7 +21,7 @@ void Bubble_Sort::run_sort(int array[], int size) {
     for(int i=0;i<size-1;i++){
         for(int j=0;j<size-i-1;j++)
         {
-            count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[j], array[j+1]);
+            count_step = this->visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step, array[j], array[j+1]);
 
             if(array[j]>array[j+1])                             //checking if previous value is grater than next one or not
             {             
@@ -32,7 +32,7 @@ void Bubble_Sort::run_sort(int array[], int size) {
                 this->swap(&array[j],&array[j+1]);
                 cout << "-> SWAP ("<<array[j]<<", "<<array[j+1]<<")";
 
-                count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[j], array[j+1]);
+                count_step = this->visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step, array[j], array[j+1]);
             }
         }
     }
