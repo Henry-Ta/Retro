@@ -19,121 +19,67 @@ void Selection_Sort::run_sort(int array[], int size) {
 
     for (int i = 0; i < size-1; i++)                // One by one move boundary of unsorted subarray
     {
-
         int min_number = i;         // Find the minimum element in unsorted array
 
         for (int j = i+1; j < size; j++){
 
-            system("clear");
-            cout << "\n\t\t\t\tSELECTION SORT\n\n";
-            cout << "Original\n";
-
-            //this->visualize_sort(original_array,size);
-            this->visualize_sort(original_array,size);
-
-            count_step++;
-            cout << "Pass " << count_step;
-            cout << " - (Min: " << array[min_number] << ", Check: "<< array[j] <<") ";
+            count_step = this->visualize_processing_sort(array,original_array,size,count_step, array[min_number], array[j]);
 
             if (array[j] < array[min_number]){          // Swap current min with the new min if found out
                 min_number = j;
+
                 cout << " - UPDATE (New Min: "<<array[min_number]<<")";
+
+                count_step = this->visualize_processing_sort(array,original_array,size,count_step, array[min_number], array[j]);
+
             }
-
-            cout << endl;
-            //this->visualize_sort(array,size);
-            this->visualize_sort(array,size);
-            usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
-
         }
         cout << "-> SWAP (" << array[min_number] <<", "<< array[i]<<")";        // NEED TO UPDATE
-
         this->swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element
 
-        system("clear");
-        cout << "\n\t\t\t\tSELECTION SORT\n\n";
-        cout << "Original\n";
-
-        //this->visualize_sort(original_array,size);
-        this->visualize_sort(original_array,size);
-
-        count_step++;
-        cout << "Pass " << count_step;
-
-        cout << endl;
-        //this->visualize_sort(array,size);
-        this->visualize_sort(array,size);
-        usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+        count_step = this->visualize_processing_sort(array,original_array,size,count_step);
     }
 }
 
+int Selection_Sort::visualize_processing_sort(int array[], int original_array[],int size, int count_step){
+    //array[]: array to be sorted
+    //original_array[]: copy of array[] to display original version
+    //size: size of array
+    //count_step: increase number to count each step
 
-/*
-void Selection_Sort::swap(int *num1, int *num2)
-{
-    int temp = *num1;
-    *num1 = *num2;
-    *num2 = temp;
-}
-
-//Function to print an array
-void Selection_Sort::print_array(int array[], int size)
-{
-    for (int i = 0; i < size; i++)
-        cout << array[i] << " ";
+    system("clear");
+    cout << "\n\t\t\t\tSELECTION SORT\n\n";
+    cout << "Original\n";
+    this->visualize_sort(original_array,size);
+    count_step++;
+    cout << "Pass " << count_step;
     cout << endl;
+    this->visualize_sort(array,size);
+    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+    return count_step;
 }
 
-void Selection_Sort::visualize_sort(int array[], int size){
-    string visualization;
-    for (int i = 0; i < size; i++){
-        switch(array[i]){
+int Selection_Sort::visualize_processing_sort(int array[], int original_array[],int size, int count_step, int array_min, int array_j){
+    //array[]: array to be sorted
+    //original_array[]: copy of array[] to display original version
+    //size: size of array
+    //count_step: increase number to count each step
 
-            case 1:
-            visualization+="\t\t\t 1 ─\n";
-            break;
-            case 2:
-            visualization+="\t\t\t 2 ──\n";
-            break;
-            case 3:
-            visualization+="\t\t\t 3 ───\n";
-            break;
-            case 4:
-            visualization+="\t\t\t 4 ────\n";
-            break;
-            case 5:
-            visualization+="\t\t\t 5 ─────\n";
-            break;
-            case 6:
-            visualization+="\t\t\t 6 ──────\n";
-            break;
-            case 7:
-            visualization+="\t\t\t 7 ───────\n";
-            break;
-            case 8:
-            visualization+="\t\t\t 8 ────────\n";
-            break;
-            case 9:
-            visualization+="\t\t\t 9 ─────────\n";
-            break;
-            case 10:
-            visualization+="\t\t\t10 ──────────\n";
-            break;
-            case 11:
-            visualization+="\t\t\t11 ───────────\n";
-            break;
-            case 12:
-            visualization+="\t\t\t12 ────────────\n";
-            break;
-            case 13:
-            visualization+="\t\t\t13 ─────────────\n";
-            break;
-            case 14:
-            visualization+="\t\t\t14 ──────────────\n";
-            break;
-        }
-    }
+    //array_min: show value of array[min_number]
+    //array_j: value of current element to check ( array[j] )
 
-    cout << visualization << "\n\n";
+    system("clear");
+    cout << "\n\t\t\t\tSELECTION SORT\n\n";
+    cout << "Original\n";
+    this->visualize_sort(original_array,size);
+    count_step++;
+    cout << "Pass " << count_step;
+    cout << " - (Min: " << array_min << ", Check: "<< array_j <<") ";
+    cout << endl;
+    this->visualize_sort(array,size);
+    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+    return count_step;
 }
-*/
+
