@@ -59,11 +59,12 @@ void Sort_Manager::run_game_body(){
     cout << "\n\t\t\t     3. Insertion Sort";
     cout << "\n\t\t\t     4. Binary Insertion Sort";
     cout << "\n\t\t\t     5. Quick Sort";
+    cout << "\n\t\t\t     6. Shell Sort";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
     if(user_choice == 1 || user_choice == 2 || user_choice == 3 ||
-            user_choice == 4 || user_choice == 5){
+            user_choice == 4 || user_choice == 5 || user_choice == 6){
         this->run_sort(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -89,25 +90,28 @@ void Sort_Manager::run_sort(int i){
 
         random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
 
-        switch(i){
-        case 1:
-            bubble_sort.run_sort(array, numbers_of_elements);
-            break;
-        case 2:
-            selection_sort.run_sort(array, numbers_of_elements);
-            break;
-        case 3:
-            insertion_sort.run_sort(array, numbers_of_elements);
-            break;
-        case 4:
-            binary_insertion_sort.run_sort(array, numbers_of_elements);
-            break;
-        case 5:
-            int original_array[numbers_of_elements];                    // make a copy of original array
-            copy( array, array+numbers_of_elements, original_array );   // to display
+        int original_array[numbers_of_elements];                    // make a copy of original array
+        copy( array, array+numbers_of_elements, original_array );   // to display in case 5 (quick sort)
 
-            quick_sort.run_sort(array, original_array, numbers_of_elements, 0, numbers_of_elements-1);
-            break;
+        switch(i){
+            case 1:
+                bubble_sort.run_sort(array, numbers_of_elements);
+                break;
+            case 2:
+                selection_sort.run_sort(array, numbers_of_elements);
+                break;
+            case 3:
+                insertion_sort.run_sort(array, numbers_of_elements);
+                break;
+            case 4:
+                binary_insertion_sort.run_sort(array, numbers_of_elements);
+                break;
+            case 5:
+                quick_sort.run_sort(array, original_array, numbers_of_elements, 0, numbers_of_elements-1);
+                break;
+            case 6:
+                shell_sort.run_sort(array, numbers_of_elements);
+                break;
         }
 
     }else{
@@ -127,6 +131,9 @@ void Sort_Manager::run_sort(int i){
             break;
         case 5:
             this->run_sort(5);
+            break;
+        case 6:
+            this->run_sort(6);
             break;
         }
     }

@@ -31,7 +31,7 @@ void Binary_Insertion_Sort::run_sort(int array[], int size){
     int count_step = 0;
     int original_array[size];
     copy( array, array+size, original_array );      // copy array, syntax: copy(source_array, source_array + source_array_size, destination_array)
-            // to display final sorted array
+
     int i,j,selected,location;
 
     for (i = 1; i < size; ++i){

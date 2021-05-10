@@ -13,6 +13,7 @@ SOURCES += \
         quick_sort.cpp \
         rock_paper_scissor.cpp \
         selection_sort.cpp \
+        shell_sort.cpp \
         sort.cpp \
         sort_manager.cpp \
         state.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     quick_sort.h \
     rock_paper_scissor.h \
     selection_sort.h \
+    shell_sort.h \
     sort.h \
     sort_manager.h \
     state.h \
