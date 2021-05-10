@@ -10,7 +10,6 @@ public:
 
     void run_sort(int array[], int size);
 
-    int visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step, int key);
     int visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step, int key, int array_j);
 };
 

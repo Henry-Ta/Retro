@@ -32,21 +32,18 @@ void Shell_Sort::run_sort(int array[], int size) {
            // location for a[i] is found
            int j;
            for (j = i; j >= gap && array[j - gap] > temp; j -= gap){
-
                count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
 
+               cout << "-> UPDATE (Check: "<<array[j-gap]<<")";
                array[j] = array[j - gap];
 
-               cout << "-> UPDATE (Check: "<<array[j]<<")";
                count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
-
-
             }
+           cout << "-> UPDATE (Check: "<<temp<<")";
            //  put temp (the original a[i]) in its correct location
            array[j] = temp;
 
            count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
-
        }
    }
 }

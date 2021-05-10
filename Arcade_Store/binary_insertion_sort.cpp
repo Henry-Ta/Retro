@@ -15,7 +15,7 @@ Binary_Insertion_Sort::Binary_Insertion_Sort():Sort()
 int Binary_Insertion_Sort::binarySearch(int array[], int item, int low, int high)
 {
     if (high <= low)
-        return (item > array[low]) ? (low + 1) : low;
+        return (item > array[low]) ? (low + 1) : low;           // return (low+1) if (item>array[low], else return (low)
 
     int mid = (low + high) / 2;
 
@@ -42,35 +42,39 @@ void Binary_Insertion_Sort::run_sort(int array[], int size){
 
         while (j >= location)           // Move all elements after location to create space
         {
-            system("clear");
-            cout << "\n\t\t\tBINARY INSERTION SORT\n\n";
-            cout << "Original\n";
-            this->visualize_sort(original_array,size);
-            count_step++;
-            cout << "Pass " << count_step;
-            cout << " - (Selected: " << array[j] << ", Location: "<< location <<") ";
+            count_step = this->visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step,selected,location);
 
+            cout << "-> UPDATE (Check: " << array[j] <<") ";
             array[j + 1] = array[j];
             j--;
 
-            cout << endl;
-            this->visualize_sort(array,size);
-            usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
-
+            count_step = this->visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step,selected,location);
         }
-        cout << "-> UPDATE (Selected: " << array[j+1] <<") ";
+        cout << "-> UPDATE (Selected: " << selected <<") ";
         array[j + 1] = selected;
 
-
-        system("clear");
-        cout << "\n\t\t\t\tBINARY INSERTION SORT\n\n";
-        cout << "Original\n";
-        this->visualize_sort(original_array,size);
-        count_step++;
-        cout << "Pass " << count_step;
-        cout << endl;
-        this->visualize_sort(array,size);
-        usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
-
+        count_step = Sort::visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step);
     }
+}
+
+int Binary_Insertion_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
+                                                     int selected, int location){
+    //array[]: array to be sorted
+    //original_array[]: copy of array[] to display original version
+    //size: size of array
+    //count_step: increase number to count each step
+
+    //selected: array[i];
+    //location: binarySearch(array, selected, 0, j);
+
+    system("clear");
+    cout << "\n\t\t\t"<<sort_name<<"\n\n";
+    cout << "Original\n";
+    this->visualize_sort(original_array,size);
+    count_step++;
+    cout << "Pass " << count_step;
+    cout << " - (Selected: " << selected << ", Location: "<< location <<") ";
+    cout << endl;
+    this->visualize_sort(array,size);
+    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
 }

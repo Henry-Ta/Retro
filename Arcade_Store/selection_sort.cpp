@@ -26,12 +26,10 @@ void Selection_Sort::run_sort(int array[], int size) {
             count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
 
             if (array[j] < array[min_number]){          // Swap current min with the new min if found out
+                cout << "-> UPDATE (Min: "<<j<<")";
                 min_number = j;
 
-                cout << "-> UPDATE (New Min: "<<array[min_number]<<")";
-
                 count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
-
             }
         }
         cout << "-> SWAP (" << array[min_number] <<", "<< array[i]<<")";        // NEED TO UPDATE

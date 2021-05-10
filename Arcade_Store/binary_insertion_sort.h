@@ -11,6 +11,8 @@ public:
     void run_sort(int array[], int size);
 
     int binarySearch(int array[], int item, int low, int high);
+
+    int visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step, int selected, int location);
 };
 
 #endif // BINARY_INSERTION_SORT_H
