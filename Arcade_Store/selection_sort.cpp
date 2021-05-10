@@ -23,44 +23,27 @@ void Selection_Sort::run_sort(int array[], int size) {
 
         for (int j = i+1; j < size; j++){
 
-            count_step = this->visualize_processing_sort(array,original_array,size,count_step, array[min_number], array[j]);
+            count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
 
             if (array[j] < array[min_number]){          // Swap current min with the new min if found out
                 min_number = j;
 
-                cout << " - UPDATE (New Min: "<<array[min_number]<<")";
+                cout << "-> UPDATE (New Min: "<<array[min_number]<<")";
 
-                count_step = this->visualize_processing_sort(array,original_array,size,count_step, array[min_number], array[j]);
+                count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
 
             }
         }
         cout << "-> SWAP (" << array[min_number] <<", "<< array[i]<<")";        // NEED TO UPDATE
         this->swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element
 
-        count_step = this->visualize_processing_sort(array,original_array,size,count_step);
+        count_step = Sort::visualize_processing_sort("\tSELECTION SORT", array,original_array,size,count_step);
     }
 }
 
-int Selection_Sort::visualize_processing_sort(int array[], int original_array[],int size, int count_step){
-    //array[]: array to be sorted
-    //original_array[]: copy of array[] to display original version
-    //size: size of array
-    //count_step: increase number to count each step
 
-    system("clear");
-    cout << "\n\t\t\t\tSELECTION SORT\n\n";
-    cout << "Original\n";
-    this->visualize_sort(original_array,size);
-    count_step++;
-    cout << "Pass " << count_step;
-    cout << endl;
-    this->visualize_sort(array,size);
-    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
-
-    return count_step;
-}
-
-int Selection_Sort::visualize_processing_sort(int array[], int original_array[],int size, int count_step, int array_min, int array_j){
+int Selection_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
+                                              int array_min, int array_j){
     //array[]: array to be sorted
     //original_array[]: copy of array[] to display original version
     //size: size of array
@@ -70,7 +53,7 @@ int Selection_Sort::visualize_processing_sort(int array[], int original_array[],
     //array_j: value of current element to check ( array[j] )
 
     system("clear");
-    cout << "\n\t\t\t\tSELECTION SORT\n\n";
+    cout << "\n\t\t\t"<<sort_name<<"\n\n";
     cout << "Original\n";
     this->visualize_sort(original_array,size);
     count_step++;

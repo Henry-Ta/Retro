@@ -33,25 +33,25 @@ void Shell_Sort::run_sort(int array[], int size) {
            int j;
            for (j = i; j >= gap && array[j - gap] > temp; j -= gap){
 
-               count_step = this->visualize_processing_sort(array,original_array,size,count_step, gap, array[j]);
+               count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
 
                array[j] = array[j - gap];
 
                cout << "-> UPDATE (Check: "<<array[j]<<")";
-               count_step = this->visualize_processing_sort(array,original_array,size,count_step, gap, array[j]);
+               count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
 
 
             }
            //  put temp (the original a[i]) in its correct location
            array[j] = temp;
 
-           count_step = this->visualize_processing_sort(array,original_array,size,count_step, gap, array[j]);
+           count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
 
        }
    }
 }
 
-int Shell_Sort::visualize_processing_sort(int array[], int original_array[],int size, int count_step,
+int Shell_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
                                           int gap, int array_j){
     //array[]: array to be sorted
     //original_array[]: copy of array[] to display original version
@@ -61,7 +61,7 @@ int Shell_Sort::visualize_processing_sort(int array[], int original_array[],int 
     //gap: show value of gap in Shell sort
     //array_j: value of current element to check ( array[j] )
     system("clear");
-    cout << "\n\t\t\tBINARY INSERTION SORT\n\n";
+    cout << "\n\t\t\t"<<sort_name<<"\n\n";
     cout << "Original\n";
     this->visualize_sort(original_array,size);
     count_step++;

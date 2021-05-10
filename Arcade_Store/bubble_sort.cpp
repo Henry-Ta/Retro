@@ -21,17 +21,7 @@ void Bubble_Sort::run_sort(int array[], int size) {
     for(int i=0;i<size-1;i++){
         for(int j=0;j<size-i-1;j++)
         {
-            system("clear");
-            cout << "\n\t\t\t\tBUBBLE SORT\n\n";
-            cout << "Original\n";
-
-            //this->visualize_sort(original_array,size);
-            this->visualize_sort(original_array,size);
-
-            count_step++;
-            cout << "Pass " << count_step;
-            cout << " - (" << array[j] << ", "<< array[j+1] <<") ";
-
+            count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[j], array[j+1]);
 
             if(array[j]>array[j+1])                             //checking if previous value is grater than next one or not
             {             
@@ -39,84 +29,35 @@ void Bubble_Sort::run_sort(int array[], int size) {
                 array[j]=array[j+1];
                 array[j+1]=temp;*/
 
-                //this->swap(&array[j],&array[j+1]);
-                Sort::swap(&array[j],&array[j+1]);
-                cout << "<- SWAP -> ("<<array[j]<<", "<<array[j+1]<<")";
+                this->swap(&array[j],&array[j+1]);
+                cout << "-> SWAP ("<<array[j]<<", "<<array[j+1]<<")";
+
+                count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[j], array[j+1]);
             }
-
-            cout << endl;
-            //this->visualize_sort(array,size);
-            this->visualize_sort(array,size);
-            usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
         }
     }
 }
 
-/*
-void Bubble_Sort::swap(int *num1, int *num2)
-{
-    int temp = *num1;
-    *num1 = *num2;
-    *num2 = temp;
-}
+int Bubble_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
+                                           int array_j, int array_j_plus_1){
+    //array[]: array to be sorted
+    //original_array[]: copy of array[] to display original version
+    //size: size of array
+    //count_step: increase number to count each step
 
-void Bubble_Sort::print_array(int array[], int size)
-{
-    for (int i = 0; i < size; i++)
-        cout << array[i] << " ";
+    //array_j: value of the current element array[j]
+    //array_j_plus_1: value of the next element array[j+1]
+
+    system("clear");
+    cout << "\n\t\t\t"<<sort_name<<"\n\n";
+    cout << "Original\n";
+    this->visualize_sort(original_array,size);
+    count_step++;
+    cout << "Pass " << count_step;
+    cout << " - (" << array_j << ", "<< array_j_plus_1 <<") ";
     cout << endl;
+    this->visualize_sort(array,size);
+    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+    return count_step;
 }
-
-void Bubble_Sort::visualize_sort(int array[], int size){
-    string visualization;
-    for (int i = 0; i < size; i++){
-        switch(array[i]){
-
-            case 1:
-            visualization+="\t\t\t 1 ─\n";
-            break;
-            case 2:
-            visualization+="\t\t\t 2 ──\n";
-            break;
-            case 3:
-            visualization+="\t\t\t 3 ───\n";
-            break;
-            case 4:
-            visualization+="\t\t\t 4 ────\n";
-            break;
-            case 5:
-            visualization+="\t\t\t 5 ─────\n";
-            break;
-            case 6:
-            visualization+="\t\t\t 6 ──────\n";
-            break;
-            case 7:
-            visualization+="\t\t\t 7 ───────\n";
-            break;
-            case 8:
-            visualization+="\t\t\t 8 ────────\n";
-            break;
-            case 9:
-            visualization+="\t\t\t 9 ─────────\n";
-            break;
-            case 10:
-            visualization+="\t\t\t10 ──────────\n";
-            break;
-            case 11:
-            visualization+="\t\t\t11 ───────────\n";
-            break;
-            case 12:
-            visualization+="\t\t\t12 ────────────\n";
-            break;
-            case 13:
-            visualization+="\t\t\t13 ─────────────\n";
-            break;
-            case 14:
-            visualization+="\t\t\t14 ──────────────\n";
-            break;
-        }
-    }
-
-    cout << visualization << "\n\n";
-}
-*/

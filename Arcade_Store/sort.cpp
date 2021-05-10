@@ -1,7 +1,7 @@
 #include "sort.h"
 
 #include <iostream>
-
+#include <unistd.h>         // Used for usleep()
 using namespace std;
 
 Sort::Sort()
@@ -73,4 +73,23 @@ void Sort::visualize_sort(int array[], int size){
     }
 
     cout << visualization << "\n\n";
+}
+
+int Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step){
+    //array[]: array to be sorted
+    //original_array[]: copy of array[] to display original version
+    //size: size of array
+    //count_step: increase number to count each step
+
+    system("clear");
+    cout << "\n\t\t\t"<<sort_name<<"\n\n";
+    cout << "Original\n";
+    this->visualize_sort(original_array,size);
+    count_step++;
+    cout << "Pass " << count_step;
+    cout << endl;
+    this->visualize_sort(array,size);
+    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+    return count_step;
 }
