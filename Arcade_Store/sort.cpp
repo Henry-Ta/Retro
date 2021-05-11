@@ -89,7 +89,7 @@ int Sort::visualize_processing_sort(string sort_name, int array[], int original_
     cout << "Pass " << count_step;
     cout << endl;
     this->visualize_sort(array,size);
-    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+    usleep(100000);               // 1s = 1,000,000 ; delaying system 0.5s (0.5x1000000) to display animation
 
     return count_step;
 }

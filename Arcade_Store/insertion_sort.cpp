@@ -22,23 +22,25 @@ void Insertion_Sort::run_sort(int array[], int size) {
         int key = array[i];
         int j = i - 1;
 
+        cout << "-> CHECK Key(" << key <<") ";
+        count_step = Sort::visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step);
+
         while (j >= 0 && array[j] > key)        // if the current element is > key, move the current element to the back, make it a sorted array
         {
-            count_step = this->visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step,key,array[j]);
+            cout << "-> SORT Key("<<key<<") - Current(" << array[j] <<") ";
+            array[j + 1] = array[j];                // update the current element ..
+            count_step = Sort::visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step);
 
-            cout << "-> UPDATE (Check: " << array[j] <<") ";
-            array[j + 1] = array[j];                // update the current element
-            j--;                                    // by moving backward to the previous elements until the loop failed (current element < key)
-
-            count_step = this->visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step,key,array[j]);
+            j--;                                    // ..by moving backward to the previous elements until the loop failed (current element < key)
         }
-        cout << "-> UPDATE (Key: " << key <<") ";
+        cout << "-> UPDATE Key(" << key <<") ";
         array[j + 1] = key;             // keep moving key until the end of the array
 
-        count_step = this->visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step,key,array[j]);
+        count_step = Sort::visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step);
     }
 }
 
+/*
 int Insertion_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step, int key, int array_j){
     //array[]: array to be sorted
     //original_array[]: copy of array[] to display original version
@@ -61,3 +63,4 @@ int Insertion_Sort::visualize_processing_sort(string sort_name, int array[], int
 
     return count_step;
 }
+*/

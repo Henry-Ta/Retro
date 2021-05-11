@@ -11,12 +11,14 @@ Quick_Sort::Quick_Sort():Sort()
 
 }
 
+// Pick last element as pivot
 /* This function takes last element as pivot, places
 the pivot element at its correct position in sorted
 array, and places all smaller (smaller than pivot)
 to left of pivot and all greater elements to right
 of pivot */
-int Quick_Sort::partition (int array[], int low, int high, int size, int origi_array[])
+int Quick_Sort::partition (int array[], int low, int high,
+                           int size, int origi_array[])
 {
     int pivot = array[high]; // pivot
     int i = (low - 1); // Index of smaller element and indicates the right position of pivot found so far
@@ -27,19 +29,21 @@ int Quick_Sort::partition (int array[], int low, int high, int size, int origi_a
 
     for (int j = low; j <= high - 1; j++)
     {
-        count_step = this->visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step,pivot, array[j]);
+        cout <<"-> CHECK Current("<<array[j]<<") - Pivot("<<pivot<<")";
+        count_step = Sort::visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step);
 
         // If current element is smaller than the pivot
         if (array[j] < pivot)
         {
-            cout <<"-> SWAP ("<<array[i]<<", "<<array[j]<<")";
+
             i++; // increment index of smaller element
+            cout <<"-> SWAP Current("<<array[j]<<") - Last Element("<<array[i]<<") - Pivot("<<pivot<<")";
             this->swap(&array[i], &array[j]);
 
-            count_step = this->visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step,pivot, array[j]);
+            count_step = Sort::visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step);
         }
     }
-    cout <<"-> SWAP ("<<array[i+1]<<", "<<array[high]<<")";
+    cout <<"-> SWAP Pivot("<<array[high]<<") - Last Element("<<array[i+1]<<")";
     this->swap(&array[i + 1], &array[high]);
 
     // to visualize
@@ -67,6 +71,7 @@ void Quick_Sort::run_sort(int array[],int original_array[], int size, int low, i
     }
 }
 
+/*
 int Quick_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
                                           int pivot, int array_j){
     //array[]: array to be sorted
@@ -90,3 +95,4 @@ int Quick_Sort::visualize_processing_sort(string sort_name, int array[], int ori
 
     return count_step;
 }
+*/

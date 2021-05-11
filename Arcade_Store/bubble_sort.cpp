@@ -21,7 +21,9 @@ void Bubble_Sort::run_sort(int array[], int size) {
     for(int i=0;i<size-1;i++){
         for(int j=0;j<size-i-1;j++)
         {
-            count_step = this->visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step, array[j], array[j+1]);
+            cout << "-> CHECK Current(" << array[j] << ") - Next("<< array[j+1] <<") ";
+            //count_step = this->visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step, array[j], array[j+1]);
+            count_step = Sort::visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step);
 
             if(array[j]>array[j+1])                             //checking if previous value is grater than next one or not
             {             
@@ -29,15 +31,17 @@ void Bubble_Sort::run_sort(int array[], int size) {
                 array[j]=array[j+1];
                 array[j+1]=temp;*/
 
+                cout << "-> SWAP Current("<<array[j]<<") - Next("<<array[j+1]<<")";
                 this->swap(&array[j],&array[j+1]);
-                cout << "-> SWAP ("<<array[j]<<", "<<array[j+1]<<")";
 
-                count_step = this->visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step, array[j], array[j+1]);
+                //count_step = this->visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step, array[j], array[j+1]);
+                count_step = Sort::visualize_processing_sort("\tBUBBLE SORT",array,original_array,size,count_step);
             }
         }
     }
 }
 
+/*
 int Bubble_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
                                            int array_j, int array_j_plus_1){
     //array[]: array to be sorted
@@ -61,3 +65,4 @@ int Bubble_Sort::visualize_processing_sort(string sort_name, int array[], int or
 
     return count_step;
 }
+*/

@@ -23,23 +23,26 @@ void Selection_Sort::run_sort(int array[], int size) {
 
         for (int j = i+1; j < size; j++){
 
-            count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
+            cout << "-> CHECK Min(" << array[min_number] <<") - Current("<<array[j]<<")";
+            //count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
+            count_step = Sort::visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step);
 
             if (array[j] < array[min_number]){          // Swap current min with the new min if found out
-                cout << "-> UPDATE (Min: "<<j<<")";
+                cout << "-> UPDATE Min("<<array[j]<<")";
                 min_number = j;
 
-                count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
+                //count_step = this->visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step, array[min_number], array[j]);
+                count_step = Sort::visualize_processing_sort("\tSELECTION SORT",array,original_array,size,count_step);
             }
         }
-        cout << "-> SWAP (" << array[min_number] <<", "<< array[i]<<")";        // NEED TO UPDATE
-        this->swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element
+        cout << "-> SWAP Min(" << array[min_number] <<") - Sorted Array's Last Element("<< array[i]<<")";
+        this->swap(&array[min_number], &array[i]);          // Swap the found minimum element with the first element in sorted subarray
 
         count_step = Sort::visualize_processing_sort("\tSELECTION SORT", array,original_array,size,count_step);
     }
 }
 
-
+/*
 int Selection_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
                                               int array_min, int array_j){
     //array[]: array to be sorted
@@ -63,4 +66,5 @@ int Selection_Sort::visualize_processing_sort(string sort_name, int array[], int
 
     return count_step;
 }
+*/
 

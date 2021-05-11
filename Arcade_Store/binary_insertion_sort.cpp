@@ -40,23 +40,24 @@ void Binary_Insertion_Sort::run_sort(int array[], int size){
 
         location = this->binarySearch(array, selected, 0, j);       // uses binary search to find location where selected sould be inseretd
 
+        cout << "-> CHECK Selected("<<selected<<") - Location(" << location <<") ";
+        count_step = Sort::visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step);
         while (j >= location)           // Move all elements after location to create space
         {
-            count_step = this->visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step,selected,location);
-
-            cout << "-> UPDATE (Check: " << array[j] <<") ";
+            cout << "-> SORT Selected("<<selected<<") - Current(" << array[j] <<")";
             array[j + 1] = array[j];
-            j--;
+            count_step = Sort::visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step);
 
-            count_step = this->visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step,selected,location);
+            j--;
         }
-        cout << "-> UPDATE (Selected: " << selected <<") ";
+        cout << "-> UPDATE Selected(" << selected <<") - Location(" << location <<") ";
         array[j + 1] = selected;
 
-        count_step = this->visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step,selected,location);
+        count_step = Sort::visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step);
     }
 }
 
+/*
 int Binary_Insertion_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
                                                      int selected, int location){
     //array[]: array to be sorted
@@ -79,4 +80,4 @@ int Binary_Insertion_Sort::visualize_processing_sort(string sort_name, int array
     usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
 
     return count_step;
-}
+}*/

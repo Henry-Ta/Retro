@@ -22,6 +22,7 @@ void Shell_Sort::run_sort(int array[], int size) {
        // The first gap elements a[0..gap-1] are already in gapped order
        // keep adding one more element until the entire array is
        // gap sorted
+
        for (int i = gap; i < size; i += 1)
        {
            // add a[i] to the elements that have been gap sorted
@@ -32,22 +33,24 @@ void Shell_Sort::run_sort(int array[], int size) {
            // location for a[i] is found
            int j;
            for (j = i; j >= gap && array[j - gap] > temp; j -= gap){
-               count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
 
-               cout << "-> UPDATE (Check: "<<array[j-gap]<<")";
+               cout << "-> CHECK Current("<<array[j-gap]<<") - Last("<<array[j]<<") - Gap("<<gap<<")";
                array[j] = array[j - gap];
 
-               count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
+               count_step = Sort::visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step);
+
             }
-           cout << "-> UPDATE (Check: "<<temp<<")";
+           cout << "-> UPDATE Current("<<temp<<") - Last("<<array[j]<<") - Gap("<<gap<<")";
            //  put temp (the original a[i]) in its correct location
            array[j] = temp;
 
-           count_step = this->visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step, gap, array[j]);
+           count_step = Sort::visualize_processing_sort("\tSHELL SORT",array,original_array,size,count_step);
        }
+
    }
 }
 
+/*
 int Shell_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
                                           int gap, int array_j){
     //array[]: array to be sorted
@@ -69,4 +72,4 @@ int Shell_Sort::visualize_processing_sort(string sort_name, int array[], int ori
     usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
 
     return count_step;      // return number of step to keep counting steps later on other calls
-}
+}*/
