@@ -10,6 +10,7 @@ SOURCES += \
         insertion_sort.cpp \
         main.cpp \
         menu.cpp \
+        merge_sort.cpp \
         quick_sort.cpp \
         rock_paper_scissor.cpp \
         selection_sort.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     bubble_sort.h \
     insertion_sort.h \
     menu.h \
+    merge_sort.h \
     quick_sort.h \
     rock_paper_scissor.h \
     selection_sort.h \

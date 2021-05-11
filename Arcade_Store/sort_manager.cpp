@@ -60,11 +60,12 @@ void Sort_Manager::run_game_body(){
     cout << "\n\t\t\t     4. Binary Insertion Sort";
     cout << "\n\t\t\t     5. Quick Sort";
     cout << "\n\t\t\t     6. Shell Sort";
+    cout << "\n\t\t\t     7. Merge Sort";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
-    if(user_choice == 1 || user_choice == 2 || user_choice == 3 ||
-            user_choice == 4 || user_choice == 5 || user_choice == 6){
+    if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 ||
+            user_choice == 5 || user_choice == 6 || user_choice == 7){
         this->run_sort(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -112,6 +113,9 @@ void Sort_Manager::run_sort(int i){
             case 6:
                 shell_sort.run_sort(array, numbers_of_elements);
                 break;
+            case 7:
+                merge_sort.run_sort(array, 0, numbers_of_elements-1, numbers_of_elements, original_array);
+                break;
         }
 
     }else{
@@ -135,87 +139,11 @@ void Sort_Manager::run_sort(int i){
         case 6:
             this->run_sort(6);
             break;
+        case 7:
+            this->run_sort(7);
+            break;
         }
     }
-
-    /*
-    int numbers_of_elements=-1;         // initiate and refresh user choice everytime we run sort
-    switch(i){
-        case 1:
-
-            cout << "\n\t\tHow many elements in array to sort (2-14)? ";
-            cin >> numbers_of_elements;
-            if(numbers_of_elements>=2 && numbers_of_elements<=14){
-
-                //int n = sizeof(arr)/sizeof(arr[0]);       // get size of array
-
-                int array[numbers_of_elements];
-                for (int i=0; i < numbers_of_elements;i++)
-                {
-                    array[i] = i+1;                         // array starts from 0, but can't display 0 in visualization so +1 for value
-                }
-
-                //bubble_sort.print_array(array,numbers_of_elements);
-
-                random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
-
-                bubble_sort.run_sort(array, numbers_of_elements);
-
-            }else{
-                cout << "\n☠ Wrong input, please try again ☠\n\n";
-                this->run_sort(1);
-            }
-
-            break;
-
-        case 2:
-
-            cout << "\n\t\tHow many elements in array to sort (2-14)? ";
-            cin >> numbers_of_elements;
-            if(numbers_of_elements>=2 && numbers_of_elements<=14){
-
-                int array[numbers_of_elements];
-                for (int i=0; i < numbers_of_elements;i++)
-                {
-                    array[i] = i+1;                         // array starts from 0, but can't display 0 in visualization so +1 for value
-                }
-
-                random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
-
-                selection_sort.run_sort(array, numbers_of_elements);
-
-            }else{
-                cout << "\n☠ Wrong input, please try again ☠\n\n";
-                this->run_sort(2);
-            }
-
-            break;
-
-        case 3:
-
-            cout << "\n\t\tHow many elements in array to sort (2-14)? ";
-            cin >> numbers_of_elements;
-            if(numbers_of_elements>=2 && numbers_of_elements<=14){
-
-                int array[numbers_of_elements];
-                for (int i=0; i < numbers_of_elements;i++)
-                {
-                    array[i] = i+1;                         // array starts from 0, but can't display 0 in visualization so +1 for value
-                }
-
-                random_shuffle(array, array + numbers_of_elements);     // organize elements randomly
-
-                selection_sort.run_sort(array, numbers_of_elements);
-
-            }else{
-                cout << "\n☠ Wrong input, please try again ☠\n\n";
-                this->run_sort(3);
-            }
-
-            break;
-
-    }*/
-
 }
 
 void Sort_Manager::display(){
