@@ -7,6 +7,7 @@
 #include "user_page.h"
 #include "rock_paper_scissor.h"
 #include "sort_manager.h"
+#include "search_manager.h"
 
 #include <iostream>
 #include <unistd.h>         // Used for usleep()
@@ -27,6 +28,7 @@ private:
 
     Rock_Paper_Scissor rock_paper_scissor;
     Sort_Manager sort_manager;
+    Search_Manager search_manager;
 
 public:
     State_Manager();

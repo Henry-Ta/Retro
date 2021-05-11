@@ -49,6 +49,7 @@ void State_Manager::update(){
             break;
 
         case 3:
+            this->load(3);
             break;
 
         case 6:
@@ -98,6 +99,18 @@ void State_Manager::load(int state_id){         // use id of state to run that s
 
             sort_manager.set_is_started(false);       //refresh attributes to default
             sort_manager.set_is_running(false);
+        }
+        break;
+
+    case 3:
+        if(!search_manager.get_is_finished()){      // state is running
+            search_manager.update();
+        }else{                                          // state finished
+            this->set_state(search_manager.get_next_state());
+            search_manager.set_is_finished(false);
+
+            search_manager.set_is_started(false);       //refresh attributes to default
+            search_manager.set_is_running(false);
         }
         break;
 

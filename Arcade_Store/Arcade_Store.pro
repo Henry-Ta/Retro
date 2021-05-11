@@ -8,11 +8,14 @@ SOURCES += \
         binary_insertion_sort.cpp \
         bubble_sort.cpp \
         insertion_sort.cpp \
+        linear_search.cpp \
         main.cpp \
         menu.cpp \
         merge_sort.cpp \
         quick_sort.cpp \
         rock_paper_scissor.cpp \
+        search.cpp \
+        search_manager.cpp \
         selection_sort.cpp \
         shell_sort.cpp \
         sort.cpp \
@@ -27,10 +30,13 @@ HEADERS += \
     binary_insertion_sort.h \
     bubble_sort.h \
     insertion_sort.h \
+    linear_search.h \
     menu.h \
     merge_sort.h \
     quick_sort.h \
     rock_paper_scissor.h \
+    search.h \
+    search_manager.h \
     selection_sort.h \
     shell_sort.h \
     sort.h \

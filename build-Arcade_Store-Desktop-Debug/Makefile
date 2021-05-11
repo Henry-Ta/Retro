@@ -56,11 +56,14 @@ SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/binary_insertion_sort.cpp \
 		../Arcade_Store/bubble_sort.cpp \
 		../Arcade_Store/insertion_sort.cpp \
+		../Arcade_Store/linear_search.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
 		../Arcade_Store/merge_sort.cpp \
 		../Arcade_Store/quick_sort.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
+		../Arcade_Store/search.cpp \
+		../Arcade_Store/search_manager.cpp \
 		../Arcade_Store/selection_sort.cpp \
 		../Arcade_Store/shell_sort.cpp \
 		../Arcade_Store/sort.cpp \
@@ -73,11 +76,14 @@ OBJECTS       = about.o \
 		binary_insertion_sort.o \
 		bubble_sort.o \
 		insertion_sort.o \
+		linear_search.o \
 		main.o \
 		menu.o \
 		merge_sort.o \
 		quick_sort.o \
 		rock_paper_scissor.o \
+		search.o \
+		search_manager.o \
 		selection_sort.o \
 		shell_sort.o \
 		sort.o \
@@ -226,10 +232,13 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		binary_insertion_sort.h \
 		bubble_sort.h \
 		insertion_sort.h \
+		linear_search.h \
 		menu.h \
 		merge_sort.h \
 		quick_sort.h \
 		rock_paper_scissor.h \
+		search.h \
+		search_manager.h \
 		selection_sort.h \
 		shell_sort.h \
 		sort.h \
@@ -241,11 +250,14 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../Arcade_Store/binary_insertion_sort.cpp \
 		../Arcade_Store/bubble_sort.cpp \
 		../Arcade_Store/insertion_sort.cpp \
+		../Arcade_Store/linear_search.cpp \
 		../Arcade_Store/main.cpp \
 		../Arcade_Store/menu.cpp \
 		../Arcade_Store/merge_sort.cpp \
 		../Arcade_Store/quick_sort.cpp \
 		../Arcade_Store/rock_paper_scissor.cpp \
+		../Arcade_Store/search.cpp \
+		../Arcade_Store/search_manager.cpp \
 		../Arcade_Store/selection_sort.cpp \
 		../Arcade_Store/shell_sort.cpp \
 		../Arcade_Store/sort.cpp \
@@ -599,6 +611,10 @@ insertion_sort.o: ../Arcade_Store/insertion_sort.cpp ../Arcade_Store/insertion_s
 		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o insertion_sort.o ../Arcade_Store/insertion_sort.cpp
 
+linear_search.o: ../Arcade_Store/linear_search.cpp ../Arcade_Store/linear_search.h \
+		../Arcade_Store/search.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o linear_search.o ../Arcade_Store/linear_search.cpp
+
 main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/user_profile.h \
 		../Arcade_Store/menu.h \
@@ -614,7 +630,10 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/binary_insertion_sort.h \
 		../Arcade_Store/quick_sort.h \
 		../Arcade_Store/shell_sort.h \
-		../Arcade_Store/merge_sort.h
+		../Arcade_Store/merge_sort.h \
+		../Arcade_Store/search_manager.h \
+		../Arcade_Store/linear_search.h \
+		../Arcade_Store/search.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arcade_Store/main.cpp
 
 menu.o: ../Arcade_Store/menu.cpp ../Arcade_Store/menu.h \
@@ -632,6 +651,15 @@ quick_sort.o: ../Arcade_Store/quick_sort.cpp ../Arcade_Store/quick_sort.h \
 rock_paper_scissor.o: ../Arcade_Store/rock_paper_scissor.cpp ../Arcade_Store/rock_paper_scissor.h \
 		../Arcade_Store/state.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rock_paper_scissor.o ../Arcade_Store/rock_paper_scissor.cpp
+
+search.o: ../Arcade_Store/search.cpp ../Arcade_Store/search.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o search.o ../Arcade_Store/search.cpp
+
+search_manager.o: ../Arcade_Store/search_manager.cpp ../Arcade_Store/search_manager.h \
+		../Arcade_Store/state.h \
+		../Arcade_Store/linear_search.h \
+		../Arcade_Store/search.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o search_manager.o ../Arcade_Store/search_manager.cpp
 
 selection_sort.o: ../Arcade_Store/selection_sort.cpp ../Arcade_Store/selection_sort.h \
 		../Arcade_Store/sort.h
@@ -674,7 +702,10 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/binary_insertion_sort.h \
 		../Arcade_Store/quick_sort.h \
 		../Arcade_Store/shell_sort.h \
-		../Arcade_Store/merge_sort.h
+		../Arcade_Store/merge_sort.h \
+		../Arcade_Store/search_manager.h \
+		../Arcade_Store/linear_search.h \
+		../Arcade_Store/search.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state_manager.o ../Arcade_Store/state_manager.cpp
 
 user_page.o: ../Arcade_Store/user_page.cpp ../Arcade_Store/user_page.h \
