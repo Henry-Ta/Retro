@@ -53,7 +53,7 @@ void Binary_Insertion_Sort::run_sort(int array[], int size){
         cout << "-> UPDATE (Selected: " << selected <<") ";
         array[j + 1] = selected;
 
-        count_step = Sort::visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step);
+        count_step = this->visualize_processing_sort("BINARY INSERTION SORT",array,original_array,size,count_step,selected,location);
     }
 }
 
@@ -77,4 +77,6 @@ int Binary_Insertion_Sort::visualize_processing_sort(string sort_name, int array
     cout << endl;
     this->visualize_sort(array,size);
     usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+    return count_step;
 }

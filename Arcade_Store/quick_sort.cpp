@@ -27,42 +27,23 @@ int Quick_Sort::partition (int array[], int low, int high, int size, int origi_a
 
     for (int j = low; j <= high - 1; j++)
     {
-        system("clear");
-        cout << "\n\t\t\t\tQUICK SORT\n\n";
-        cout << "Original\n";
-        this->visualize_sort(original_array,size);
-        count_step++;
-        cout << "Pass " << count_step;
-        cout << " - (Pivot: " << pivot << ", Check: "<< array[j] <<") ";
+        count_step = this->visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step,pivot, array[j]);
 
         // If current element is smaller than the pivot
         if (array[j] < pivot)
         {
-            cout <<" <- SWAP";
+            cout <<"-> SWAP ("<<array[i]<<", "<<array[j]<<")";
             i++; // increment index of smaller element
             this->swap(&array[i], &array[j]);
-            cout <<" -> ("<<array[i]<<", "<<array[j]<<")";
+
+            count_step = this->visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step,pivot, array[j]);
         }
-
-        cout << endl;
-        this->visualize_sort(array,size);
-        usleep(300000);               // delaying system 0.3s (0.5x1000000) to display animation
-
     }
     cout <<"-> SWAP ("<<array[i+1]<<", "<<array[high]<<")";
     this->swap(&array[i + 1], &array[high]);
 
-    // to display
-    system("clear");
-    cout << "\n\t\t\t\tQUICK SORT\n\n";
-    cout << "Original\n";
-    this->visualize_sort(original_array,size);
-    count_step++;
-    cout << "Pass " << count_step;
-    cout << " - (Pivot: " << pivot << ") ";
-    cout << endl;
-    this->visualize_sort(array,size);
-    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+    // to visualize
+    count_step = Sort::visualize_processing_sort("\tQUICK SORT",array,original_array,size,count_step);
 
     return (i + 1);
 }
@@ -84,4 +65,28 @@ void Quick_Sort::run_sort(int array[],int original_array[], int size, int low, i
         this->run_sort(array,original_array, size, low, pi - 1);
         this->run_sort(array,original_array, size, pi + 1, high);
     }
+}
+
+int Quick_Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step,
+                                          int pivot, int array_j){
+    //array[]: array to be sorted
+    //original_array[]: copy of array[] to display original version
+    //size: size of array
+    //count_step: increase number to count each step
+
+    //pivot: array[high]
+    //array_j: value of the current element array[j]
+
+    system("clear");
+    cout << "\n\t\t\t"<<sort_name<<"\n\n";
+    cout << "Original\n";
+    this->visualize_sort(original_array,size);
+    count_step++;
+    cout << "Pass " << count_step;
+    cout << " - (Pivot: " << pivot << ", Check: "<< array_j <<") ";
+    cout << endl;
+    this->visualize_sort(array,size);
+    usleep(300000);               // delaying system 0.5s (0.5x1000000) to display animation
+
+    return count_step;
 }

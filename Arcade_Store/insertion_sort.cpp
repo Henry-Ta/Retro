@@ -35,7 +35,7 @@ void Insertion_Sort::run_sort(int array[], int size) {
         cout << "-> UPDATE (Key: " << key <<") ";
         array[j + 1] = key;             // keep moving key until the end of the array
 
-        count_step = Sort::visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step);
+        count_step = this->visualize_processing_sort("\tINSERTION SORT",array,original_array,size,count_step,key,array[j]);
     }
 }
 
