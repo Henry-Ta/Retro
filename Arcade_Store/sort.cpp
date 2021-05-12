@@ -9,10 +9,15 @@ Sort::Sort()
 
 }
 
-void Sort::swap(int *num1, int *num2){
+void Sort::swap(int* num1, int* num2){
     int temp = *num1;
     *num1 = *num2;
     *num2 = temp;
+}
+void Sort::swap(int& num1, int& num2){
+    int temp = num1;
+    num1 = num2;
+    num2 = temp;
 }
 
 void Sort::print_array(int array[], int size)       // Function to print an array

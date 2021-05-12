@@ -7,6 +7,7 @@ SOURCES += \
         about.cpp \
         binary_insertion_sort.cpp \
         bubble_sort.cpp \
+        heap_sort.cpp \
         insertion_sort.cpp \
         linear_search.cpp \
         main.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     about.h \
     binary_insertion_sort.h \
     bubble_sort.h \
+    heap_sort.h \
     insertion_sort.h \
     linear_search.h \
     menu.h \

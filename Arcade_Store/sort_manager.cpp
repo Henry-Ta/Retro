@@ -61,11 +61,12 @@ void Sort_Manager::run_game_body(){
     cout << "\n\t\t\t     5. Quick Sort";
     cout << "\n\t\t\t     6. Shell Sort";
     cout << "\n\t\t\t     7. Merge Sort";
+    cout << "\n\t\t\t     8. Heap Sort";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
     if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 ||
-            user_choice == 5 || user_choice == 6 || user_choice == 7){
+            user_choice == 5 || user_choice == 6 || user_choice == 7 || user_choice == 8){
         this->run_sort(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -116,6 +117,9 @@ void Sort_Manager::run_sort(int i){
             case 7:
                 merge_sort.run_sort(array, 0, numbers_of_elements-1, numbers_of_elements, original_array);
                 break;
+            case 8:
+                heap_sort.run_sort(array, numbers_of_elements, original_array, numbers_of_elements);
+                break;
         }
 
     }else{
@@ -141,6 +145,9 @@ void Sort_Manager::run_sort(int i){
             break;
         case 7:
             this->run_sort(7);
+            break;
+        case 8:
+            this->run_sort(8);
             break;
         }
     }

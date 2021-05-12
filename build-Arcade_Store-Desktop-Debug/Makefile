@@ -55,6 +55,7 @@ OBJECTS_DIR   = ./
 SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/binary_insertion_sort.cpp \
 		../Arcade_Store/bubble_sort.cpp \
+		../Arcade_Store/heap_sort.cpp \
 		../Arcade_Store/insertion_sort.cpp \
 		../Arcade_Store/linear_search.cpp \
 		../Arcade_Store/main.cpp \
@@ -75,6 +76,7 @@ SOURCES       = ../Arcade_Store/about.cpp \
 OBJECTS       = about.o \
 		binary_insertion_sort.o \
 		bubble_sort.o \
+		heap_sort.o \
 		insertion_sort.o \
 		linear_search.o \
 		main.o \
@@ -231,6 +233,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../Arcade_Store/Arcade_Store.pro about.h \
 		binary_insertion_sort.h \
 		bubble_sort.h \
+		heap_sort.h \
 		insertion_sort.h \
 		linear_search.h \
 		menu.h \
@@ -249,6 +252,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		user_profile.h ../Arcade_Store/about.cpp \
 		../Arcade_Store/binary_insertion_sort.cpp \
 		../Arcade_Store/bubble_sort.cpp \
+		../Arcade_Store/heap_sort.cpp \
 		../Arcade_Store/insertion_sort.cpp \
 		../Arcade_Store/linear_search.cpp \
 		../Arcade_Store/main.cpp \
@@ -607,6 +611,10 @@ bubble_sort.o: ../Arcade_Store/bubble_sort.cpp ../Arcade_Store/bubble_sort.h \
 		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bubble_sort.o ../Arcade_Store/bubble_sort.cpp
 
+heap_sort.o: ../Arcade_Store/heap_sort.cpp ../Arcade_Store/heap_sort.h \
+		../Arcade_Store/sort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o heap_sort.o ../Arcade_Store/heap_sort.cpp
+
 insertion_sort.o: ../Arcade_Store/insertion_sort.cpp ../Arcade_Store/insertion_sort.h \
 		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o insertion_sort.o ../Arcade_Store/insertion_sort.cpp
@@ -631,6 +639,7 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/quick_sort.h \
 		../Arcade_Store/shell_sort.h \
 		../Arcade_Store/merge_sort.h \
+		../Arcade_Store/heap_sort.h \
 		../Arcade_Store/search_manager.h \
 		../Arcade_Store/linear_search.h \
 		../Arcade_Store/search.h
@@ -681,7 +690,8 @@ sort_manager.o: ../Arcade_Store/sort_manager.cpp ../Arcade_Store/sort_manager.h 
 		../Arcade_Store/binary_insertion_sort.h \
 		../Arcade_Store/quick_sort.h \
 		../Arcade_Store/shell_sort.h \
-		../Arcade_Store/merge_sort.h
+		../Arcade_Store/merge_sort.h \
+		../Arcade_Store/heap_sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sort_manager.o ../Arcade_Store/sort_manager.cpp
 
 state.o: ../Arcade_Store/state.cpp ../Arcade_Store/state.h
@@ -703,6 +713,7 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/quick_sort.h \
 		../Arcade_Store/shell_sort.h \
 		../Arcade_Store/merge_sort.h \
+		../Arcade_Store/heap_sort.h \
 		../Arcade_Store/search_manager.h \
 		../Arcade_Store/linear_search.h \
 		../Arcade_Store/search.h
