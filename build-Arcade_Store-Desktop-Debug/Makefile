@@ -54,6 +54,7 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/binary_insertion_sort.cpp \
+		../Arcade_Store/binary_search.cpp \
 		../Arcade_Store/bubble_sort.cpp \
 		../Arcade_Store/heap_sort.cpp \
 		../Arcade_Store/insertion_sort.cpp \
@@ -75,6 +76,7 @@ SOURCES       = ../Arcade_Store/about.cpp \
 		../Arcade_Store/user_profile.cpp 
 OBJECTS       = about.o \
 		binary_insertion_sort.o \
+		binary_search.o \
 		bubble_sort.o \
 		heap_sort.o \
 		insertion_sort.o \
@@ -232,6 +234,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../Arcade_Store/Arcade_Store.pro about.h \
 		binary_insertion_sort.h \
+		binary_search.h \
 		bubble_sort.h \
 		heap_sort.h \
 		insertion_sort.h \
@@ -251,6 +254,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		user_page.h \
 		user_profile.h ../Arcade_Store/about.cpp \
 		../Arcade_Store/binary_insertion_sort.cpp \
+		../Arcade_Store/binary_search.cpp \
 		../Arcade_Store/bubble_sort.cpp \
 		../Arcade_Store/heap_sort.cpp \
 		../Arcade_Store/insertion_sort.cpp \
@@ -607,6 +611,12 @@ binary_insertion_sort.o: ../Arcade_Store/binary_insertion_sort.cpp ../Arcade_Sto
 		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o binary_insertion_sort.o ../Arcade_Store/binary_insertion_sort.cpp
 
+binary_search.o: ../Arcade_Store/binary_search.cpp ../Arcade_Store/binary_search.h \
+		../Arcade_Store/search.h \
+		../Arcade_Store/binary_insertion_sort.h \
+		../Arcade_Store/sort.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o binary_search.o ../Arcade_Store/binary_search.cpp
+
 bubble_sort.o: ../Arcade_Store/bubble_sort.cpp ../Arcade_Store/bubble_sort.h \
 		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bubble_sort.o ../Arcade_Store/bubble_sort.cpp
@@ -642,7 +652,8 @@ main.o: ../Arcade_Store/main.cpp ../Arcade_Store/state_manager.h \
 		../Arcade_Store/heap_sort.h \
 		../Arcade_Store/search_manager.h \
 		../Arcade_Store/linear_search.h \
-		../Arcade_Store/search.h
+		../Arcade_Store/search.h \
+		../Arcade_Store/binary_search.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Arcade_Store/main.cpp
 
 menu.o: ../Arcade_Store/menu.cpp ../Arcade_Store/menu.h \
@@ -667,7 +678,10 @@ search.o: ../Arcade_Store/search.cpp ../Arcade_Store/search.h
 search_manager.o: ../Arcade_Store/search_manager.cpp ../Arcade_Store/search_manager.h \
 		../Arcade_Store/state.h \
 		../Arcade_Store/linear_search.h \
-		../Arcade_Store/search.h
+		../Arcade_Store/search.h \
+		../Arcade_Store/binary_search.h \
+		../Arcade_Store/binary_insertion_sort.h \
+		../Arcade_Store/sort.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o search_manager.o ../Arcade_Store/search_manager.cpp
 
 selection_sort.o: ../Arcade_Store/selection_sort.cpp ../Arcade_Store/selection_sort.h \
@@ -716,7 +730,8 @@ state_manager.o: ../Arcade_Store/state_manager.cpp ../Arcade_Store/state_manager
 		../Arcade_Store/heap_sort.h \
 		../Arcade_Store/search_manager.h \
 		../Arcade_Store/linear_search.h \
-		../Arcade_Store/search.h
+		../Arcade_Store/search.h \
+		../Arcade_Store/binary_search.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o state_manager.o ../Arcade_Store/state_manager.cpp
 
 user_page.o: ../Arcade_Store/user_page.cpp ../Arcade_Store/user_page.h \

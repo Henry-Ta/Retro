@@ -6,6 +6,7 @@ CONFIG -= qt
 SOURCES += \
         about.cpp \
         binary_insertion_sort.cpp \
+        binary_search.cpp \
         bubble_sort.cpp \
         heap_sort.cpp \
         insertion_sort.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 HEADERS += \
     about.h \
     binary_insertion_sort.h \
+    binary_search.h \
     bubble_sort.h \
     heap_sort.h \
     insertion_sort.h \

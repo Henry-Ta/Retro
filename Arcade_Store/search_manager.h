@@ -3,11 +3,15 @@
 
 #include "state.h"
 #include "linear_search.h"
+#include "binary_search.h"
+#include "binary_insertion_sort.h"          // to sort array before search binary, can use any kind of sorts
 
-class Search_Manager : public State, public Linear_Search
+class Search_Manager : public State, public Linear_Search, public Binary_Search, public Binary_Insertion_Sort
 {
 private:
     Linear_Search linear_search;
+    Binary_Search binary_search;
+    Binary_Insertion_Sort binary_insertion_sort;
 
 public:
     Search_Manager();

@@ -155,7 +155,7 @@ void Sort_Manager::run_sort(int i){
 
 void Sort_Manager::display(){
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│                   SORTING VISUALISER                  │\n";
+    cout << "\t│                   SORTING VISUALIZER                  │\n";
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│       8. Menu         9. About           0. Exit      │\n";
     cout << "\t•-------------------------------------------------------•\n";

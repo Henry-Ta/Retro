@@ -258,7 +258,7 @@ int Search::visualize_processing_search(string search_name, int array[], int ori
     cout << "Pass " << count_step;
     cout << endl;
     this->visualize_search(array,size,search_node,check_node);
-    usleep(300000);               // 1s = 1,000,000 ; delaying system 0.5s (0.5x1000000) to display animation
+    usleep(200000);               // 1s = 1,000,000 ; delaying system 0.5s (0.5x1000000) to display animation
 
     return count_step;
 }

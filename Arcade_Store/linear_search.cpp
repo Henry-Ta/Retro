@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-#include <unistd.h>         // Used for usleep()
-
 using namespace std;
 
 Linear_Search::Linear_Search()
