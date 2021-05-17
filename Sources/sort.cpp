@@ -77,7 +77,7 @@ void Sort::visualize_sort(int array[], int size){
         }
     }
 
-    cout << visualization << "\n\n";
+    cout << visualization << "\n";
 }
 
 int Sort::visualize_processing_sort(string sort_name, int array[], int original_array[],int size, int count_step){
@@ -87,7 +87,7 @@ int Sort::visualize_processing_sort(string sort_name, int array[], int original_
     //count_step: increase number to count each step
 
     system("clear");
-    cout << "\n\t\t\t"<<sort_name<<"\n\n";
+    cout << "\n\n\t\t\t"<<sort_name<<"\n\n";
     cout << "Original\n";
     this->visualize_sort(original_array,size);
     count_step++;

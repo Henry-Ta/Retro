@@ -54,6 +54,7 @@ int User_Profile::get_user_score(){
 }
 
 void User_Profile::show_login_signup(){    
+    system("clear");
     this->show_logo();
 
     cout << "\n\t❅--------------| WELCOME TO RETRO WORLD |--------------❅\n";
