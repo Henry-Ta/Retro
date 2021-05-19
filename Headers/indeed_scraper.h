@@ -2,10 +2,14 @@
 #define INDEED_SCRAPER_H
 
 #include "state.h"
-
-class Indeed_Scraper : public State
+#include "indeed_data.h"
+class Indeed_Scraper : public State, public Indeed_Data
 {
+private:
+    Indeed_Data indeed_data[15];
+
 public:
+    
     Indeed_Scraper();
 
     void update();
@@ -19,6 +23,10 @@ public:
     void run_game_body();
 
     void run_scraping();
+
+    void get_data(Indeed_Data indeed_data[]);
+
+    void display_data(Indeed_Data indeed_data[], int data_size);
 };
 
 #endif // INDEED_SCRAPER_H
