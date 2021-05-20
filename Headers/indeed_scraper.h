@@ -27,6 +27,8 @@ public:
     void get_data(Indeed_Data indeed_data[]);
 
     void display_data(Indeed_Data indeed_data[], int data_size);
+
+    string shorten_length(int max_length, string s);
 };
 
 #endif // INDEED_SCRAPER_H
