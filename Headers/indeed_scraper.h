@@ -3,10 +3,12 @@
 
 #include "state.h"
 #include "indeed_data.h"
+
+#include <vector>  //vector<string>
 class Indeed_Scraper : public State, public Indeed_Data
 {
 private:
-    Indeed_Data indeed_data[15];
+    vector<Indeed_Data> indeed_data; 
 
 public:
     
@@ -24,9 +26,9 @@ public:
 
     void run_scraping();
 
-    void get_data(Indeed_Data indeed_data[]);
+    void get_data();
 
-    void display_data(Indeed_Data indeed_data[], int data_size);
+    void display_data();
 
     string shorten_length(int max_length, string s);
 };

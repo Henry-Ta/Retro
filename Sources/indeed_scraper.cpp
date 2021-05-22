@@ -81,6 +81,8 @@ void Indeed_Scraper::run_scraping() {  // Embedding Python file to scrap Indeed
                                                    // create a new file
     file.open("./Data/indeed_data_modified.csv");
 
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');     // clear '\n' from the previous input
+
     // Initialize the python instance
     Py_Initialize();
 
@@ -95,19 +97,18 @@ void Indeed_Scraper::run_scraping() {  // Embedding Python file to scrap Indeed
     // Py_Finalize();            // If close it here, get error when refresh,
     // close in get_replay_exit()
 
-    this->get_data(this->indeed_data);
-    this->display_data(this->indeed_data, 15);
+    this->get_data();
+    this->display_data();
 }
 
-void Indeed_Scraper::get_data(Indeed_Data indeed_data[]) {
+void Indeed_Scraper::get_data() {
     string line;
     ifstream read_file("./Data/indeed_data_modified.csv");
 
     getline(read_file,line);  // read the first line , skip the first line when starting loo
 
     vector<string> store_data;
-    while (!read_file.eof()) {  // Use a while loop together with the getline()
-                                // function to read the file line by line
+    while (!read_file.eof()) {  // Use a while loop together with the getline() function to read the file line by line
         getline(read_file, line);  // start reading from the second line
 
         stringstream line_convert(line);
@@ -120,48 +121,53 @@ void Indeed_Scraper::get_data(Indeed_Data indeed_data[]) {
     }
 
     int store_data_size = (int)store_data.size();
-    int position = 0;  // count number from 0->7 and reset 0->7 to group up each
-                       // line of data
+    int position = 0;  // count number from 0->7 and reset 0->7 to group up each line of data
+
+    Indeed_Data data;       // create a temp data to store each line
     int index = 0;     // assign value to a specific index place
+    
     for (int i = 0; i < store_data_size; i++) {
         if (position == 0) {
-            indeed_data[index].set_title(store_data.at(i));
+            data.set_title(store_data.at(i));
         } else if (position == 1) {
-            indeed_data[index].set_company(store_data.at(i));
+            data.set_company(store_data.at(i));
         } else if (position == 2) {
-            indeed_data[index].set_location(store_data.at(i));
+            data.set_location(store_data.at(i));
         } else if (position == 3) {
-            indeed_data[index].set_salary(store_data.at(i));
+            data.set_salary(store_data.at(i));
         } else if (position == 4) {
-            indeed_data[index].set_date(store_data.at(i));
+            data.set_date(store_data.at(i));
         } else if (position == 5) {
-            indeed_data[index].set_rating(store_data.at(i));
+            data.set_rating(store_data.at(i));
         } else if (position == 6) {
-            indeed_data[index].set_difficulty(store_data.at(i));
+            data.set_difficulty(store_data.at(i));
         } else if (position == 7) {
-            indeed_data[index].set_remote(store_data.at(i));
+            data.set_remote(store_data.at(i));
         }
 
         position++;  // increase pos until enough 8 elements
         if (position == 8) {
+            this->indeed_data.push_back(data);      // after collecting all element (each line) for data, push it to vector indeed_data
             position = 0;  // reset pos to start the new group
             index++;       // move to next row of data
         }
     }
 }
 
-void Indeed_Scraper::display_data(Indeed_Data indeed_data[], int data_size) {
+void Indeed_Scraper::display_data() {
     system("clear");
     cout << "\t•-----------------------------------------------------------------------------------------------------------------------•\n";
     cout << "\t│                                                       INDEED DATA                                                     │\n";
     cout << "\t•-----------------------------------------------------------------------------------------------------------------------•\n";
     cout << "\t│                 TITLE                  │       COMPANY      │    LOCATION   │      SALARY      │     DATE    │ RATING │\n";
     cout << "\t•-----------------------------------------------------------------------------------------------------------------------•\n";
-    for (int i = 0; i < data_size; i++) {
-        cout <<"\t│" << this->shorten_length(40,indeed_data[i].get_title()) <<"│" << this->shorten_length(20,indeed_data[i].get_company()) <<"│" << this->shorten_length(15, indeed_data[i].get_location()) <<"│" << this->shorten_length(18,indeed_data[i].get_salary()) <<"│" << this->shorten_length(13, indeed_data[i].get_date()) <<"│" << setw(8)<< indeed_data[i].get_rating()<<"│"<< endl;
+
+    for (int i = 0; i < (int)this->indeed_data.size(); i++){
+        cout <<"\t│" << this->shorten_length(40,this->indeed_data.at(i).get_title()) <<"│" << this->shorten_length(20,this->indeed_data.at(i).get_company()) <<"│" << this->shorten_length(15, this->indeed_data.at(i).get_location()) <<"│" << this->shorten_length(18,this->indeed_data.at(i).get_salary()) <<"│" << this->shorten_length(13, this->indeed_data.at(i).get_date()) <<"│" << setw(8)<< this->indeed_data.at(i).get_rating()<<"│\n";
         cout << "\t│-----------------------------------------------------------------------------------------------------------------------│\n";
     }
-    cout << endl;
+        
+    cout << "\n";
 }
 
 string Indeed_Scraper::shorten_length(int max_length, string s){
@@ -174,7 +180,6 @@ string Indeed_Scraper::shorten_length(int max_length, string s){
         size_t found = short_convert.rfind(" ");        // find last (rfind) space in short version
         if (found!=string::npos)
             short_convert.replace (found,max_length,".");
-        
     }            
     cout << setw(max_length);
     return short_convert;

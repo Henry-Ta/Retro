@@ -3,18 +3,11 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 #----------------------------Scap whole page
+what_input = input("\n\tEnter job title, keywords or company :")
+what_input.replace(" ", "+")        # replace space with + to match indeed's input format
+where_input = input("\n\tEnter location : ")
 
-URL="https://ca.indeed.com/jobs?q=Computer+Internship&l=Vancouver%2C+BC&radius=5"
-page = requests.get(URL)
-
-soup = BeautifulSoup(page.content, 'html.parser')
-
-# data = soup.find_all("div",{"data-tn-component":"organicJob"})
-
-# data = soup.find_all("div",{"class":"jobsearch-SerpJobCard"})
-
-data = soup.select("div.jobsearch-SerpJobCard")
-print(len(data))
+URL="https://ca.indeed.com/jobs?q="+what_input+"+&l="+where_input+"&start="
 
 title = [] 
 company =[]
@@ -25,51 +18,61 @@ remote = []
 salary = []
 rating = []
 
-clean_data = []
-for d in list(data):
-    try:
-        # title.append(d.find("h2",{"class":"title"}).get_text().replace('\n\n','').replace('\nnew',''))
-        title.append(d.find("a",{"data-tn-element":"jobTitle"}).get_text().replace('\n',''))
-    except:
-        title.append(None)
+for pg in range(0,5):
+    URL_page = URL + str(pg*10)
+    page = requests.get(URL_page)
 
-    try:
-        company.append(d.find("span",{"class":"company"}).get_text().replace('\n',''))
-        # company.append(d.find("span",{"class":"company"}).get_text())
-    except:
-        company.append(None)
+    #soup = BeautifulSoup(page.text, 'html.parser')
+    soup = BeautifulSoup(page.content, 'html.parser')
 
-    try:
-        location.append(d.find("span",{"class":"location"}).get_text())
-    except:
-        location.append(None)
+    #data = soup.find_all("div",{"data-tn-component":"organicJob"})
+    #data = soup.find_all("div",{"class":"jobsearch-SerpJobCard"})
+    data = soup.select("div.jobsearch-SerpJobCard")
+    
+    for d in list(data):
+        try:
+            # title.append(d.find("h2",{"class":"title"}).get_text().replace('\n\n','').replace('\nnew',''))
+            title.append(d.find("a",{"data-tn-element":"jobTitle"}).get_text().replace('\n',''))
+        except:
+            title.append(None)
 
-    try:
-        difficulty.append(d.find("span",{"class":"iaLabel iaIconActive"}).get_text())  
-    except:
-        difficulty.append(None)
+        try:
+            company.append(d.find("span",{"class":"company"}).get_text().replace('\n',''))
+            # company.append(d.find("span",{"class":"company"}).get_text())
+        except:
+            company.append(None)
 
-    try:
-        date.append(d.find("span",{"class":"date"}).get_text())  
-    except:
-        date.append(None)
+        try:
+            location.append(d.find("span",{"class":"location"}).get_text())
+        except:
+            location.append(None)
 
-    try:
-        salary.append(d.find("span",{"class":"salaryText"}).get_text().replace('\n',''))  
-        # salary.append(d.find("span",{"class":"salaryText"}).get_text())
-    except:
-        salary.append(None)
+        try:
+            difficulty.append(d.find("span",{"class":"iaLabel iaIconActive"}).get_text())  
+        except:
+            difficulty.append(None)
 
-    try:
-        remote.append(d.find("span",{"class":"remote"}).get_text())
-    except:
-        remote.append(None)
-        
-    try:
-        rating.append(d.find("span",{"class":"ratingsDisplay"}).get_text().replace('\n',''))
-        # rating.append(d.find("span",{"class":"ratingsDisplay"}).get_text())
-    except:
-        rating.append(None)
+        try:
+            date.append(d.find("span",{"class":"date"}).get_text())  
+        except:
+            date.append(None)
+
+        try:
+            salary.append(d.find("span",{"class":"salaryText"}).get_text().replace('\n',''))  
+            # salary.append(d.find("span",{"class":"salaryText"}).get_text())
+        except:
+            salary.append(None)
+
+        try:
+            remote.append(d.find("span",{"class":"remote"}).get_text())
+        except:
+            remote.append(None)
+            
+        try:
+            rating.append(d.find("span",{"class":"ratingsDisplay"}).get_text().replace('\n',''))
+            # rating.append(d.find("span",{"class":"ratingsDisplay"}).get_text())
+        except:
+            rating.append(None)
 
 
 save_data = pd.DataFrame({
@@ -81,7 +84,7 @@ save_data = pd.DataFrame({
     "Rating": rating,
     "Difficulty": difficulty,
     "Remote": remote
-        })
+})
 
 save_data.fillna("---", inplace = True)         # replace empty cell to ---
 # (from pandas import ExcelWriter)
@@ -96,7 +99,6 @@ save_data.fillna("---", inplace = True)         # replace empty cell to ---
 save_data.to_csv('./Data/indeed_data_original.csv', index = False, header=True)  
 save_data.to_csv('./Data/indeed_data_modified.csv', index = False, header=True, sep='|')         #replace '|' as delimter (instead of ',')
 
-print('\tDataFrame is written successfully to indeed_data.csv \n')
 
 
 #----------------------------------------------------------#
@@ -122,4 +124,3 @@ for s in save_salary:
     print(s)
     print("\n")
 '''
-
