@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from time import sleep
+import numpy
 
 #----------------------------Scap whole page
-what_input = input("\n\tEnter job title, keywords or company :")
+what_input = input("\n\t\tEnter job title, keywords or company :")
 what_input.replace(" ", "+")        # replace space with + to match indeed's input format
-where_input = input("\n\tEnter location : ")
+where_input = input("\n\t\tEnter location : ")
 
 URL="https://ca.indeed.com/jobs?q="+what_input+"+&l="+where_input+"&start="
 
@@ -18,16 +20,21 @@ remote = []
 salary = []
 rating = []
 
-for pg in range(0,5):
+proxy = {           # use this website to check proxy "http://free-proxy.cz/en/proxylist/country/CA/https/ping/level1"
+    "http":"http://142.44.136.219:32769",
+    "https":"http://142.44.136.219:32769"
+}   # use proxy to bypass block from indeed
+
+for pg in range(0,3):
     URL_page = URL + str(pg*10)
-    page = requests.get(URL_page)
+    page = requests.get(URL_page,headers={'User-Agent': 'Mozilla/5.0'},proxies=proxy)
 
-    #soup = BeautifulSoup(page.text, 'html.parser')
-    soup = BeautifulSoup(page.content, 'html.parser')
+    soup = BeautifulSoup(page.text, 'html.parser')
+    #soup = BeautifulSoup(page.content, 'html.parser')
 
-    #data = soup.find_all("div",{"data-tn-component":"organicJob"})
+    data = soup.find_all("div",{"data-tn-component":"organicJob"})
     #data = soup.find_all("div",{"class":"jobsearch-SerpJobCard"})
-    data = soup.select("div.jobsearch-SerpJobCard")
+    #data = soup.select("div.jobsearch-SerpJobCard")
     
     for d in list(data):
         try:
@@ -74,6 +81,10 @@ for pg in range(0,5):
         except:
             rating.append(None)
 
+    delays = [3, 0.5, 1]
+    delay = numpy.random.choice(delays)
+    sleep(delay)
+    
 
 save_data = pd.DataFrame({
     "Title": title,

@@ -152,6 +152,8 @@ void Indeed_Scraper::get_data() {
             index++;       // move to next row of data
         }
     }
+
+    cout << endl;
 }
 
 void Indeed_Scraper::display_data() {
