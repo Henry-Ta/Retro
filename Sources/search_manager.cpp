@@ -56,10 +56,11 @@ void Search_Manager::run_game_body(){
     int user_choice;
     cout << "\n\t\t\t     1. Linear Search";
     cout << "\n\t\t\t     2. Binary Search";
+    cout << "\n\t\t\t     3. Jump Search";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
-    if(user_choice == 1 || user_choice == 2){
+    if(user_choice == 1 || user_choice == 2 || user_choice == 3){
         this->run_search(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -101,6 +102,10 @@ void Search_Manager::run_search(int i){
             case 2:
                 binary_insertion_sort.run_sort(array, numbers_of_elements);     // need to sort elements in order before searching binary
                 binary_search.run_search(array,original_array, numbers_of_elements,search_node, 0 , numbers_of_elements-1);
+                break;
+            case 3:
+                binary_insertion_sort.run_sort(array, numbers_of_elements);     // Works only sorted arrays.
+                jump_search.run_search(array, numbers_of_elements,search_node);
                 break;
         }
 
