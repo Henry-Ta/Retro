@@ -21,13 +21,14 @@ salary = []
 rating = []
 
 proxy = {           # use this website to check proxy "http://free-proxy.cz/en/proxylist/country/CA/https/ping/level1"
-    "http":"http://142.44.136.219:32769",
-    "https":"http://142.44.136.219:32769"
+    "http":"http://144.217.101.245:3129",
+    "https":"http://144.217.101.245:3129"
 }   # use proxy to bypass block from indeed
 
 for pg in range(0,3):
     URL_page = URL + str(pg*10)
-    page = requests.get(URL_page,headers={'User-Agent': 'Mozilla/5.0'},proxies=proxy)
+    # page = requests.get(URL_page,headers={'User-Agent': 'Mozilla/5.0'},proxies=proxy)
+    page = requests.get(URL_page)
 
     soup = BeautifulSoup(page.text, 'html.parser')
     #soup = BeautifulSoup(page.content, 'html.parser')
