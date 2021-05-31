@@ -9,10 +9,10 @@ Jump_Search::Jump_Search()
 
 }
 
-void Jump_Search::run_search(int array[], int size, int search_node) {
+void Jump_Search::run_search(int array[],int origin_array[], int size, int search_node) {
     int count_step = 0;
     int original_array[size];
-    copy( array, array+size, original_array );
+    copy( origin_array, origin_array+size, original_array );        // to display original array in visualization
     bool found_node = false;
 
 
@@ -31,7 +31,8 @@ void Jump_Search::run_search(int array[], int size, int search_node) {
         prev = step;
         step += sqrt(size);
         if (prev >= size)
-            return;
+            //return;
+            break;
     }
  
     // Doing a linear search for search_node in block
@@ -43,7 +44,8 @@ void Jump_Search::run_search(int array[], int size, int search_node) {
         // If we reached next block or end of
         // array, element is not present.
         if (prev == min(step, size))
-            return;
+            //return;
+            break;
     }
     // If element is found
     if (array[prev] == search_node){

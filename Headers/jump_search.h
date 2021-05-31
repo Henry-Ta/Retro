@@ -8,7 +8,7 @@ class Jump_Search : public Search
 public:
     Jump_Search();
 
-    void run_search(int array[], int size, int search_node);
+    void run_search(int array[],int origin_array[], int size, int search_node);
 };
 
 #endif // JUMP_SEARCH_H
