@@ -7,9 +7,10 @@
 #include "binary_insertion_sort.h"          // to sort array before search binary, can use any kind of sorts
 #include "jump_search.h"
 #include "fibonacci_search.h"
+#include "exponential_search.h"
 
 class Search_Manager : public State, public Linear_Search, public Binary_Search, 
-public Binary_Insertion_Sort, public Jump_Search, public Fibonacci_Search
+public Binary_Insertion_Sort, public Jump_Search, public Fibonacci_Search, public Exponential_Search
 {
 private:
     Linear_Search linear_search;
@@ -17,6 +18,7 @@ private:
     Binary_Insertion_Sort binary_insertion_sort;
     Jump_Search jump_search;
     Fibonacci_Search fibonacci_search;
+    Exponential_Search exponential_search;
     
 public:
     Search_Manager();

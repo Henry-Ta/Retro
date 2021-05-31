@@ -58,10 +58,11 @@ void Search_Manager::run_game_body(){
     cout << "\n\t\t\t     2. Binary Search";
     cout << "\n\t\t\t     3. Jump Search";
     cout << "\n\t\t\t     4. Fibonacci Search";
+    cout << "\n\t\t\t     5. Exponential Search";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
-    if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4){
+    if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 || user_choice == 5){
         this->run_search(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -112,6 +113,10 @@ void Search_Manager::run_search(int i){
                 binary_insertion_sort.run_sort(array, numbers_of_elements);     // Works only sorted arrays.
                 fibonacci_search.run_search(array,original_array, numbers_of_elements,search_node);
                 break;
+            case 5:
+                binary_insertion_sort.run_sort(array, numbers_of_elements);     // Works only sorted arrays.
+                exponential_search.run_search(array,original_array, numbers_of_elements,search_node);
+                break;
         }
 
     }else{
@@ -128,6 +133,9 @@ void Search_Manager::run_search(int i){
             break;
         case 4:
             this->run_search(4);
+            break;
+        case 5:
+            this->run_search(5);
             break;
         }
     }
