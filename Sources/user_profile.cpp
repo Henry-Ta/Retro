@@ -104,7 +104,7 @@ bool User_Profile::user_login(){
     bool valid_login=false;
 
     if(this->get_user_id().length()>0 && this->get_user_password().length()>0){     // id, pass not empty
-        valid_login = this->user_validation(this->get_user_id(),this->get_user_password(),"./Data/User_Data.csv");     // return true/false after checking id,pass with data in "user_data.txt"
+        valid_login = this->user_validation(this->get_user_id(),this->get_user_password(),"./Data/user_data.csv");     // return true/false after checking id,pass with data in "user_data.txt"
         if(!valid_login){           // failed validation
             //system("clear");
             cout << "Wrong Id / Password";
@@ -133,7 +133,7 @@ bool User_Profile::user_signup(){
     this->set_id_password();
 
     if(this->get_user_id().length()>0 && this->get_user_password().length()>0){			// if,pass not empty
-        this->save_to_file(this->get_user_id(),this->get_user_password(),"./Data/User_Data.csv");		// Save to file "user_data.txt"
+        this->save_to_file(this->get_user_id(),this->get_user_password(),"./Data/user_data.csv");		// Save to file "user_data.txt"
         cout << "Signed Up Successfully !";
     }else{ 				// id,pass empty
         //system("clear");

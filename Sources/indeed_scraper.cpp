@@ -14,6 +14,7 @@ using namespace std;
 
 Indeed_Scraper::Indeed_Scraper() {}
 
+/*
 void Indeed_Scraper::update() {
     this->display();
 
@@ -46,7 +47,7 @@ void Indeed_Scraper::get_replay_exit() {
         if (game_replay == 0) {  // exit game
             // Close the python instance
             //Py_Finalize();
-            this->set_next_state(8);  // exit to main menu
+            this->set_next_state(13);  // exit to main menu
             this->set_is_finished(true);
         } else {                      // replay
             this->set_next_state(4);  // renew current game state by
@@ -64,18 +65,13 @@ void Indeed_Scraper::run_game_body() {
     //---------------------------------------GAME FINISHED
     this->set_is_running(false);  // When game is finished, turn on flag to move
                                   // to replay_exit event
-}
+}*/
 
-void Indeed_Scraper::display() {
-    cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│                    INDEED SCRAPER                     │\n";
-    cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│       8. Menu         9. About           0. Exit      │\n";
-    cout << "\t•-------------------------------------------------------•\n";
-}
 
-void Indeed_Scraper::run_scraping() {  // Embedding Python file to scrap Indeed
-                                       // web
+
+void Indeed_Scraper::run_scraping() {  // Embedding Python file to scrap Indeed web
+    this->display();
+
     ofstream file;
     file.open("./Data/indeed_data_original.csv");  // open file, if not exist
                                                    // create a new file
@@ -99,6 +95,15 @@ void Indeed_Scraper::run_scraping() {  // Embedding Python file to scrap Indeed
 
     this->get_data();
     this->display_data();
+}
+
+void Indeed_Scraper::display() {
+    system("clear");
+    cout << "\t•-------------------------------------------------------•\n";
+    cout << "\t│                   INDEED.CA SCRAPER                   │\n";
+    cout << "\t•-------------------------------------------------------•\n";
+    //cout << "\t│       13. Menu        14. About          0. Exit      │\n";
+    //cout << "\t•-------------------------------------------------------•\n";
 }
 
 void Indeed_Scraper::get_data() {
@@ -158,7 +163,7 @@ void Indeed_Scraper::get_data() {
 
 void Indeed_Scraper::display_data() {
     system("clear");
-    cout << "\t•-----------------------------------------------------------------------------------------------------------------------•\n";
+    cout << "\n\t•-----------------------------------------------------------------------------------------------------------------------•\n";
     cout << "\t│                                                       INDEED DATA                                                     │\n";
     cout << "\t•-----------------------------------------------------------------------------------------------------------------------•\n";
     cout << "\t│                 TITLE                  │       COMPANY      │    LOCATION   │      SALARY      │     DATE    │ RATING │\n";

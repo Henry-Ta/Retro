@@ -27,7 +27,7 @@ void User_Page::update(){
     cout << "\n\t\t\tWhich number do you choose ? ";
     cin >> i;
 
-    if(i==6 || i==7 || i==8 || i==9){			//if user's choice match any option on the list
+    if(i==11 || i==12 || i==13 || i==14){			//if user's choice match any option on the list
         //this->set_user_selection(i);
         this->set_next_state(i);
         this->set_is_finished(true);
@@ -45,6 +45,6 @@ void User_Page::display(string id, string password){        // get id, pass from
     cout << "\t                ♥ ID          : "+ id + "\n";
     cout << "\t                ♥ Password    : "+ password + "\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│       8. Menu         9. About           0. Exit      │\n";
+    cout << "\t│       13. Menu        14. About          0. Exit      │\n";
     cout << "\t•-------------------------------------------------------•\n";
 }

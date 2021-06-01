@@ -1,11 +1,10 @@
 #ifndef INDEED_SCRAPER_H
 #define INDEED_SCRAPER_H
 
-#include "state.h"
 #include "indeed_data.h"
 
 #include <vector>  //vector<string>
-class Indeed_Scraper : public State, public Indeed_Data
+class Indeed_Scraper : public Indeed_Data
 {
 private:
     vector<Indeed_Data> indeed_data; 

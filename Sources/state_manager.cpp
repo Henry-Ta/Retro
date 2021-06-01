@@ -5,7 +5,7 @@ State_Manager::State_Manager():User_Profile()           // Constructor: inherits
 {
     if(User_Profile::get_is_accessed()){                // passed user validation
         this->set_is_running(true);
-        this->set_state(8);                             // start with the state of Menu (8)
+        this->set_state(13);                             // start with the state of Menu (13)
         this->run();
     }else{                                              // failed user validation
         cout << "\nAccess-> Denied";
@@ -37,7 +37,7 @@ void State_Manager::update(){
 
     string id_upper = User_Profile::get_user_id();
     transform(id_upper.begin(), id_upper.end(), id_upper.begin(), ::toupper);       // convert user id to upper case for displaying
-    cout << "\n\t"+id_upper+"(6)\t\t\t\t\tLog Out(7)\n";
+    cout << "\n\t"+id_upper+"(11)\t\t\t\t\tLog Out(12)\n";
 
     switch(this->get_state()){
         case 1:
@@ -56,25 +56,26 @@ void State_Manager::update(){
             this->load(4);
             break;
 
-        case 6:
+        //----------------------------------------- System options
+        case 11:
             user_page.set_id(User_Profile::get_user_id());
             user_page.set_password(User_Profile::get_user_password());
 
-            this->load(6);
+            this->load(11);
             break;
 
-        case 7:
+        case 12:
             system("clear");
             User_Profile::set_is_accessed(false);
             State_Manager();
             break;
 
-        case 8:
-            this->load(8);
+        case 13:
+            this->load(13);
             break;
 
-        case 9:
-            this->load(9);
+        case 14:
+            this->load(14);
             break;
     }
 }
@@ -119,18 +120,19 @@ void State_Manager::load(int state_id){         // use id of state to run that s
         break;
 
     case 4:
-        if(!indeed_scraper.get_is_finished()){      // state is running
-            indeed_scraper.update();
+        if(!web_scraper_manager.get_is_finished()){      // state is running
+            web_scraper_manager.update();
         }else{                                          // state finished
-            this->set_state(indeed_scraper.get_next_state());
-            indeed_scraper.set_is_finished(false);
+            this->set_state(web_scraper_manager.get_next_state());
+            web_scraper_manager.set_is_finished(false);
 
-            indeed_scraper.set_is_started(false);       //refresh attributes to default
-            indeed_scraper.set_is_running(false);
+            web_scraper_manager.set_is_started(false);       //refresh attributes to default
+            web_scraper_manager.set_is_running(false);
         }
         break;
 
-    case 6:
+    //----------------------------------------- System options
+    case 11:
         if(!user_page.get_is_finished()){
             user_page.update();
         }else{
@@ -139,7 +141,7 @@ void State_Manager::load(int state_id){         // use id of state to run that s
         }
         break;
 
-    case 8:
+    case 13:
         if(!menu.get_is_finished()){            // if (Menu) state didn't finish
             menu.update();                      // keep updating
         }else {                                                 // if (Menu) state finished
@@ -148,7 +150,7 @@ void State_Manager::load(int state_id){         // use id of state to run that s
         }
         break;
 
-    case 9:
+    case 14:
         if(!about.get_is_finished()){
             about.update();
         }else{

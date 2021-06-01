@@ -18,7 +18,7 @@ void About::get_user_selection(){
     cout << "\n\t\t\tWhich number do you choose? ";
     cin >> i;
 
-    if(i==6 || i==7 || i==8 || i==9){			// if selection is match with any options in list
+    if(i==11 || i==12 || i==13 || i==14){			// if selection is match with any options in list
         //this->set_user_selection(i);
         this->set_next_state(i);
         this->set_is_finished(true);
@@ -37,6 +37,6 @@ void About::display(){
     cout << "\t│                Student ID : 100301469                 │\n";
     cout << "\t│                    Github : Henry-Ta                  │\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│       8. Menu         9. About           0. Exit      │\n";
+    cout << "\t│       13. Menu        14. About          0. Exit      │\n";
     cout << "\t•-------------------------------------------------------•\n";
 }

@@ -40,7 +40,7 @@ void Sort_Manager::get_replay_exit(){
     cin >> game_replay;
     if(game_replay==1 || game_replay==0){
         if(game_replay==0){             // exit game
-            this->set_next_state(8);        // exit to main menu
+            this->set_next_state(13);        // exit to main menu
             this->set_is_finished(true);
         }else{                          // replay
             this->set_next_state(2);        // renew current game state by
@@ -62,10 +62,14 @@ void Sort_Manager::run_game_body(){
     cout << "\n\t\t\t     6. Shell Sort";
     cout << "\n\t\t\t     7. Merge Sort";
     cout << "\n\t\t\t     8. Heap Sort";
+    cout << "\n\t\t\t     0. Exit to main menu";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
-    if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 ||
+    if(user_choice == 0){
+        this->set_next_state(13);        // exit to main menu
+        this->set_is_finished(true);
+    }else if( user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 ||
             user_choice == 5 || user_choice == 6 || user_choice == 7 || user_choice == 8){
         this->run_sort(user_choice);
 
@@ -154,11 +158,12 @@ void Sort_Manager::run_sort(int i){
 }
 
 void Sort_Manager::display(){
+    system("clear");
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│                   SORTING VISUALIZER                  │\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│       8. Menu         9. About           0. Exit      │\n";
-    cout << "\t•-------------------------------------------------------•\n";
+    //cout << "\t│       13. Menu        14. About          0. Exit      │\n";
+    //cout << "\t•-------------------------------------------------------•\n";
 }
 
 /*

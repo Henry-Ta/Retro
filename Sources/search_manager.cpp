@@ -40,7 +40,7 @@ void Search_Manager::get_replay_exit(){
     cin >> game_replay;
     if(game_replay==1 || game_replay==0){
         if(game_replay==0){             // exit game
-            this->set_next_state(8);        // exit to main menu
+            this->set_next_state(13);        // exit to main menu
             this->set_is_finished(true);
         }else{                          // replay
             this->set_next_state(3);        // renew current game state by
@@ -59,10 +59,14 @@ void Search_Manager::run_game_body(){
     cout << "\n\t\t\t     3. Jump Search";
     cout << "\n\t\t\t     4. Fibonacci Search";
     cout << "\n\t\t\t     5. Exponential Search";
+    cout << "\n\t\t\t     0. Exit to main menu";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 
-    if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 || user_choice == 5){
+    if(user_choice == 0){
+        this->set_next_state(13);        // exit to main menu
+        this->set_is_finished(true);
+    }else if(user_choice == 1 || user_choice == 2 || user_choice == 3 || user_choice == 4 || user_choice == 5){
         this->run_search(user_choice);
 
         //---------------------------------------GAME FINISHED
@@ -142,9 +146,10 @@ void Search_Manager::run_search(int i){
 }
 
 void Search_Manager::display(){
+    system("clear");
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│                  SEARCHING VISUALIZER                 │\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│       8. Menu         9. About           0. Exit      │\n";
-    cout << "\t•-------------------------------------------------------•\n";
+    //cout << "\t│       13. Menu        14. About          0. Exit      │\n";
+    //cout << "\t•-------------------------------------------------------•\n";
 }

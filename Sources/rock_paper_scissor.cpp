@@ -70,7 +70,7 @@ void Rock_Paper_Scissor::get_user_selection(){
     cout << "\n\t\t\tWhich number do you choose? ";
     cin >> i;
 
-    if(i==6 || i==7 || i==8 || i==9){			// if selection is match with any options in list
+    if(i==11 || i==12 || i==13 || i==14){			// if selection is match with any options in list
         this->set_next_state(i);
         this->set_is_finished(true);
     }else if(i==0){
@@ -90,7 +90,7 @@ void Rock_Paper_Scissor::get_replay_exit(){
     if(game_replay==1 || game_replay==0){
         if(game_replay==0){             // exit game
             //this->set_is_over(true);        // turn on flag "game over" to come back to user selection
-            this->set_next_state(8);        // exit to main menu
+            this->set_next_state(13);        // exit to main menu
             this->set_is_finished(true);
         }else{                          // replay
             this->set_next_state(1);        // renew current game state by
@@ -109,10 +109,14 @@ void Rock_Paper_Scissor::run_game_body(){
     cout << "\n\t\t\t\t1. ROCK";
     cout << "\n\t\t\t\t2. PAPER";
     cout << "\n\t\t\t\t3. SCISSOR";
-    cout << "\n\t\t\tEnter your choice: ";
+    cout << "\n\t\t\t\t0. Exit to main menu";
+    cout << "\n\n\t\t\t\tEnter your choice: ";
     cin >> user_choice;
 
-    if(user_choice==1||user_choice==2||user_choice==3){
+    if(user_choice == 0){
+        this->set_next_state(13);        // exit to main menu
+        this->set_is_finished(true);
+    }else if(user_choice==1||user_choice==2||user_choice==3){
         this->determine_winner(user_choice, this->get_computer_choice());
 
         //---------------------------------------GAME FINISHED
@@ -149,9 +153,10 @@ void Rock_Paper_Scissor::determine_winner(int user_choice, int computer_choice){
 }
 
 void Rock_Paper_Scissor::display(){
+    system("clear");
     cout << "\t•-------------------------------------------------------•\n";
     cout << "\t│                   ROCK-PAPER-SCISSOR                  │\n";
     cout << "\t•-------------------------------------------------------•\n";
-    cout << "\t│       8. Menu         9. About           0. Exit      │\n";
-    cout << "\t•-------------------------------------------------------•\n";
+    //cout << "\t│       13. Menu        14. About          0. Exit      │\n";
+    //cout << "\t•-------------------------------------------------------•\n";
 }

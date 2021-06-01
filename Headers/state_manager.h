@@ -8,7 +8,7 @@
 #include "rock_paper_scissor.h"
 #include "sort_manager.h"
 #include "search_manager.h"
-#include "indeed_scraper.h"
+#include "web_scraper_manager.h"
 
 #include <iostream>
 #include <unistd.h>         // Used for usleep()
@@ -31,7 +31,7 @@ private:
     Sort_Manager sort_manager;
     Search_Manager search_manager;
 
-    Indeed_Scraper indeed_scraper;
+    Web_Scraper_Manager web_scraper_manager;
 
 public:
     State_Manager();
