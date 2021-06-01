@@ -56,6 +56,10 @@ void State_Manager::update(){
             this->load(4);
             break;
 
+        case 5:
+            this->load(5);
+            break;
+
         //----------------------------------------- System options
         case 11:
             user_page.set_id(User_Profile::get_user_id());
@@ -128,6 +132,18 @@ void State_Manager::load(int state_id){         // use id of state to run that s
 
             web_scraper_manager.set_is_started(false);       //refresh attributes to default
             web_scraper_manager.set_is_running(false);
+        }
+        break;
+
+    case 5:
+        if(!pathfinder_manager.get_is_finished()){      // state is running
+            pathfinder_manager.update();
+        }else{                                          // state finished
+            this->set_state(pathfinder_manager.get_next_state());
+            pathfinder_manager.set_is_finished(false);
+
+            pathfinder_manager.set_is_started(false);       //refresh attributes to default
+            pathfinder_manager.set_is_running(false);
         }
         break;
 

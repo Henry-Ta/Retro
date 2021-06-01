@@ -9,6 +9,7 @@
 #include "sort_manager.h"
 #include "search_manager.h"
 #include "web_scraper_manager.h"
+#include "pathfinder_manager.h"
 
 #include <iostream>
 #include <unistd.h>         // Used for usleep()
@@ -32,6 +33,8 @@ private:
     Search_Manager search_manager;
 
     Web_Scraper_Manager web_scraper_manager;
+
+    Pathfinder_Manager pathfinder_manager;
 
 public:
     State_Manager();

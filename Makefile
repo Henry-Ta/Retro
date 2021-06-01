@@ -1,0 +1,1 @@
+g++ ./Sources/*.cpp $(python3-config --cflags --libs --embed) -o ./Retro
