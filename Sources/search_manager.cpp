@@ -59,7 +59,7 @@ void Search_Manager::run_game_body(){
     cout << "\n\t\t\t     3. Jump Search";
     cout << "\n\t\t\t     4. Fibonacci Search";
     cout << "\n\t\t\t     5. Exponential Search";
-    cout << "\n\t\t\t     0. Exit to main menu";
+    cout << "\n\n\t\t\t     0. Exit to main menu";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 

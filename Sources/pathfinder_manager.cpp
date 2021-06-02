@@ -54,7 +54,7 @@ void Pathfinder_Manager::get_replay_exit(){
 void Pathfinder_Manager::run_game_body(){
     int user_choice;
     cout << "\n\t\t\t     1. ";
-    cout << "\n\t\t\t     0. Exit to main menu";
+    cout << "\n\n\t\t\t     0. Exit to main menu";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 

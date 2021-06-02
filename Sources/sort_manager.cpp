@@ -62,7 +62,7 @@ void Sort_Manager::run_game_body(){
     cout << "\n\t\t\t     6. Shell Sort";
     cout << "\n\t\t\t     7. Merge Sort";
     cout << "\n\t\t\t     8. Heap Sort";
-    cout << "\n\t\t\t     0. Exit to main menu";
+    cout << "\n\n\t\t\t     0. Exit to main menu";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
 

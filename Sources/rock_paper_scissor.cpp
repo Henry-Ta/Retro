@@ -109,7 +109,7 @@ void Rock_Paper_Scissor::run_game_body(){
     cout << "\n\t\t\t\t1. ROCK";
     cout << "\n\t\t\t\t2. PAPER";
     cout << "\n\t\t\t\t3. SCISSOR";
-    cout << "\n\t\t\t\t0. Exit to main menu";
+    cout << "\n\n\t\t\t\t0. Exit to main menu";
     cout << "\n\n\t\t\t\tEnter your choice: ";
     cin >> user_choice;
 
