@@ -6,6 +6,7 @@ PY_CFLAGS=$(shell python3-config --cflags --libs --embed)
 
 Retro: $(OBJS)
 	g++ -o Retro $(OBJS) $(PY_CFLAGS)
+	rm -f $(OBJS)		# remove *.o files
 
 main.o:
 	$(CC) -c ./Sources/main.cpp
