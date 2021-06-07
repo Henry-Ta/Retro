@@ -53,7 +53,7 @@ void Pathfinder_Manager::get_replay_exit(){
 
 void Pathfinder_Manager::run_game_body(){
     int user_choice;
-    cout << "\n\t\t\t     1. ";
+    cout << "\n\t\t\t     1. Recursion";
     cout << "\n\n\t\t\t     0. Exit to main menu";
     cout << "\n\n\t\t\t     Enter your choice: ";
     cin >> user_choice;
@@ -74,8 +74,20 @@ void Pathfinder_Manager::run_game_body(){
 }
 
 void Pathfinder_Manager::run_pathfinding(int i){
+    int map[ROW_SIZE][COLUMN_SIZE];
+
+    srand((unsigned) time(0));
+    int row=0 + (rand() % ROW_SIZE-1);
+    int col=0 + (rand() % COLUMN_SIZE-1);
+    Node start_node(row, col);
+
+    row=0 + (rand() % ROW_SIZE-1);
+    col=0 + (rand() % COLUMN_SIZE-1);
+    Node end_node(row,col);
+
     switch(i){
         case 1:
+        recursion_pathfinder.find_path(map,ROW_SIZE,COLUMN_SIZE,start_node,end_node);
         break;
     }
 }

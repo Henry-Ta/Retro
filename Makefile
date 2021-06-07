@@ -1,6 +1,6 @@
 #g++ ./Sources/*.cpp $(python3-config --cflags --libs --embed) -o ./Retro
 
-OBJS=  main.o about.o binary_insertion_sort.o binary_search.o bubble_sort.o exponential_search.o fibonacci_search.o heap_sort.o indeed_data.o indeed_scraper.o insertion_sort.o jump_search.o linear_search.o menu.o merge_sort.o pathfinder_manager.o quick_sort.o rock_paper_scissor.o search.o search_manager.o selection_sort.o shell_sort.o sort.o sort_manager.o state.o state_manager.o user_page.o user_profile.o web_scraper_manager.o 
+OBJS=  main.o about.o binary_insertion_sort.o binary_search.o bubble_sort.o exponential_search.o fibonacci_search.o heap_sort.o indeed_data.o indeed_scraper.o insertion_sort.o jump_search.o linear_search.o menu.o merge_sort.o pathfinder_manager.o quick_sort.o rock_paper_scissor.o search.o search_manager.o selection_sort.o shell_sort.o sort.o sort_manager.o state.o state_manager.o user_page.o user_profile.o web_scraper_manager.o node.o pathfinder.o recursion_pathfinder.o
 CC=g++
 PY_CFLAGS=$(shell python3-config --cflags --libs --embed)
 
@@ -94,6 +94,15 @@ user_profile.o:
 	
 web_scraper_manager.o:
 	g++ -c ./Sources/web_scraper_manager.cpp
+
+node.o:
+	g++ -c ./Sources/node.cpp
+
+pathfinder.o:
+	g++ -c ./Sources/pathfinder.cpp
+
+recursion_pathfinder.o:
+	g++ -c ./Sources/recursion_pathfinder.cpp
 
 clean: 
 	rm -f core Retro $(OBJS)

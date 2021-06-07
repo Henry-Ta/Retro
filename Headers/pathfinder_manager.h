@@ -2,9 +2,13 @@
 #define PATHFINDER_MANAGER_H
 
 #include "state.h"
+#include "recursion_pathfinder.h"
 
-class Pathfinder_Manager : public State
+class Pathfinder_Manager : public State, public Recursion_Pathfinder
 {
+private:
+    Recursion_Pathfinder recursion_pathfinder;
+
 public:
     Pathfinder_Manager();
 
