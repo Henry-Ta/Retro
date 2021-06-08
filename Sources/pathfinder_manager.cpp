@@ -9,7 +9,6 @@ Pathfinder_Manager::Pathfinder_Manager():State()
 }
 
 void Pathfinder_Manager::update(){
-
     this->display();
 
     this->load();           // Turn on flag Ask user to confirm to start playing
@@ -18,7 +17,6 @@ void Pathfinder_Manager::update(){
 }
 
 void Pathfinder_Manager::load(){
-
     this->set_is_started(true);
     this->set_is_running(true);
 }
@@ -35,7 +33,7 @@ void Pathfinder_Manager::play(){
 
 void Pathfinder_Manager::get_replay_exit(){
     int game_replay;
-    cout << "\t\tDo you want to replay or exit ? (Replay-1|Exit-0) ";
+    cout << "\t    Do you want to replay or exit ? (Replay-1|Exit-0) ";
     cin >> game_replay;
     if(game_replay==1 || game_replay==0){
         if(game_replay==0){             // exit game
@@ -74,16 +72,32 @@ void Pathfinder_Manager::run_game_body(){
 }
 
 void Pathfinder_Manager::run_pathfinding(int i){
-    int map[ROW_SIZE][COLUMN_SIZE];
+    char map[ROW_SIZE][COLUMN_SIZE];
+    for(int i=0;i<ROW_SIZE;i++){
+        for(int j=0;j<COLUMN_SIZE;j++){
+            map[i][j]=' ';
+        }
+    }
 
-    srand((unsigned) time(0));
-    int row=0 + (rand() % ROW_SIZE-1);
-    int col=0 + (rand() % COLUMN_SIZE-1);
-    Node start_node(row, col);
+    srand((unsigned)time(NULL));
+    int row=rand() % (ROW_SIZE-1);
+    int col=rand() % (COLUMN_SIZE-1);
+    Node start_node(row,col);
 
-    row=0 + (rand() % ROW_SIZE-1);
-    col=0 + (rand() % COLUMN_SIZE-1);
+    row=rand() % (ROW_SIZE-1);
+    col=rand() % (COLUMN_SIZE-1);
     Node end_node(row,col);
+
+    while(!compare_node(start_node,end_node)){
+        //cout <<"Duplicate";
+        int row=rand() % (ROW_SIZE-1);
+        int col=rand() % (COLUMN_SIZE-1);
+        start_node.set_row_column(row,col);
+
+        row=rand() % (ROW_SIZE-1);
+        col=rand() % (COLUMN_SIZE-1);
+        end_node.set_row_column(row,col);
+    }
 
     switch(i){
         case 1:
