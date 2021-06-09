@@ -88,7 +88,7 @@ void Pathfinder_Manager::run_pathfinding(int i){
     col=rand() % (COLUMN_SIZE-1);
     Node end_node(row,col);
 
-    while(!compare_node(start_node,end_node)){
+    while(!match_node(start_node,end_node)){
         //cout <<"Duplicate";
         int row=rand() % (ROW_SIZE-1);
         int col=rand() % (COLUMN_SIZE-1);
