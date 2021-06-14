@@ -83,12 +83,14 @@ void Pathfinder_Manager::run_pathfinding(int i){
     int row=rand() % (ROW_SIZE-1);
     int col=rand() % (COLUMN_SIZE-1);
     Node start_node(row,col);
+    //cout << "Start: ("<<(start_node.get_x_row())<<", "<<start_node.get_y_column()<<")";
 
     row=rand() % (ROW_SIZE-1);
     col=rand() % (COLUMN_SIZE-1);
     Node end_node(row,col);
+    //cout << "End: ("<<(end_node.get_x_row())<<", "<<end_node.get_y_column()<<")";
 
-    while(!match_node(start_node,end_node)){
+    while(match_node(start_node,end_node)){
         //cout <<"Duplicate";
         int row=rand() % (ROW_SIZE-1);
         int col=rand() % (COLUMN_SIZE-1);

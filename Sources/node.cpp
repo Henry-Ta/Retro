@@ -28,3 +28,4 @@ void Node::set_row_column(int row, int col){
     this->set_x_row(row);
     this->set_y_column(col);
 }
+
