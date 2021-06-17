@@ -41,7 +41,7 @@ $ make clean ; make ; ./Retro
 
 ## Demo
 
-![](./Screenshots/demo.mp4)
+https://youtube.com/embed/VSA25TIuNnc
 
 ## Screenshots
 
