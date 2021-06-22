@@ -23,11 +23,11 @@ void Jump_Search::run_search(int array[],int origin_array[], int size, int searc
     // present (if it is present)
     int prev = 0;
 
-    count_step = Search::visualize_processing_search("\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
+    count_step = Search::visualize_processing_search("\n\t\t\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
 
     while (array[min(step, size)-1] < search_node)
     {
-        count_step = Search::visualize_processing_search("\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
+        count_step = Search::visualize_processing_search("\n\t\t\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
         prev = step;
         step += sqrt(size);
         if (prev >= size)
@@ -39,7 +39,7 @@ void Jump_Search::run_search(int array[],int origin_array[], int size, int searc
     // beginning with prev.
     while (array[prev] < search_node)
     {
-        count_step = Search::visualize_processing_search("\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
+        count_step = Search::visualize_processing_search("\n\t\t\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
         prev++;
         // If we reached next block or end of
         // array, element is not present.
@@ -49,7 +49,7 @@ void Jump_Search::run_search(int array[],int origin_array[], int size, int searc
     }
     // If element is found
     if (array[prev] == search_node){
-        count_step = Search::visualize_processing_search("\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
+        count_step = Search::visualize_processing_search("\n\t\t\tJUMP SEARCH",array,original_array,size,count_step,search_node,array[prev]);
         found_node = true;
         return;
     }

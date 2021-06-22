@@ -1,5 +1,5 @@
-#ifndef USER_PROFILE_H
-#define USER_PROFILE_H
+#ifndef USER_H
+#define USER_H
 
 #include <iostream>
 #include <string>
@@ -10,7 +10,7 @@
 #include <string>			//	Need both libs
 using namespace std;		//	to declare string type
 
-class User_Profile
+class User
 {
 private:
     bool user_validation(string id, string passwd, string file_name);
@@ -23,7 +23,7 @@ protected:
     bool    is_accessed;
 
 public:
-    User_Profile();
+    User();
 
     void set_user_selection(int i);
     int get_user_selection();
@@ -54,4 +54,4 @@ public:
 
 };
 
-#endif // USER_PROFILE_H
+#endif // USER_H

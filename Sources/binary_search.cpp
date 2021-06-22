@@ -19,7 +19,7 @@ void Binary_Search::run_search(int array[],int origin_array[], int size, int sea
     bool found_node = false;
 
     int mid = left_node + (right_node - left_node) / 2;
-    count_step = Search::visualize_processing_search("\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
+    count_step = Search::visualize_processing_search("\n\t\t\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
 
     if (right_node >= left_node) {
 
@@ -36,7 +36,7 @@ void Binary_Search::run_search(int array[],int origin_array[], int size, int sea
         if (array[mid] > search_node){
             //return binarySearch(array, left_node, mid - 1, search_node);
 
-            count_step = Search::visualize_processing_search("\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
+            count_step = Search::visualize_processing_search("\n\t\t\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
             this->run_search(array,original_array, size,  search_node, left_node, mid - 1);
             return;
         }
@@ -44,13 +44,13 @@ void Binary_Search::run_search(int array[],int origin_array[], int size, int sea
         // Else the element can only be present
         // in right subarray
         //return binarySearch(array, mid + 1, right_node, search_node);
-        count_step = Search::visualize_processing_search("\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
+        count_step = Search::visualize_processing_search("\n\t\t\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
 
         this->run_search(array,original_array, size, search_node, mid + 1, right_node);
         return;
     }
 
-    count_step = Search::visualize_processing_search("\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
+    count_step = Search::visualize_processing_search("\n\t\t\tBINARY SEARCH",array,original_array,size,count_step,search_node,array[mid]);
 
     if(!found_node)
         cout<<"-> NOT FOUND\n";

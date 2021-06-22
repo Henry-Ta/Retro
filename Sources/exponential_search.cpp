@@ -18,7 +18,7 @@ void Exponential_Search::run_binary_search(int array[],int original_array[], int
         if (array[mid] == search_node){
             //return mid;
 
-            count_step = Search::visualize_processing_search("\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[mid]);
+            count_step = Search::visualize_processing_search("\n\t\t\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[mid]);
             found_node = true;
             return;
         }
@@ -27,7 +27,7 @@ void Exponential_Search::run_binary_search(int array[],int original_array[], int
         if (array[mid] > search_node){
             //return binarySearch(array, left_node, mid - 1, search_node);
 
-            count_step = Search::visualize_processing_search("\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[mid]);
+            count_step = Search::visualize_processing_search("\n\t\t\ttEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[mid]);
             this->run_binary_search(array,original_array, size,  search_node, left_node, mid - 1, count_step, found_node);
             return;
         }
@@ -52,7 +52,7 @@ void Exponential_Search::run_search(int array[],int origin_array[], int size, in
     // If search_node is present at firt location itself
     if (array[0] == search_node){
         //return 0;
-        count_step = Search::visualize_processing_search("\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[0]);
+        count_step = Search::visualize_processing_search("\n\t\t\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[0]);
         found_node = true;
         return;
     }
@@ -62,7 +62,7 @@ void Exponential_Search::run_search(int array[],int origin_array[], int size, in
     // repeated doubling
     int i = 1;
     while (i < size && array[i] <= search_node){
-        count_step = Search::visualize_processing_search("\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[i]);
+        count_step = Search::visualize_processing_search("\n\t\t\tEXPONENTIAL SEARCH",array,original_array,size,count_step,search_node,array[i]);
         i = i*2;
     }
         

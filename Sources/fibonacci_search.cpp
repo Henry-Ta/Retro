@@ -27,7 +27,7 @@ void Fibonacci_Search::run_search(int array[],int origin_array[], int size, int 
     /* fibM is going to store the smallest Fibonacci
        Number greater than or equal to size */
     while (fibM < size) {
-        count_step = Search::visualize_processing_search("\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[fibM]);
+        count_step = Search::visualize_processing_search("\n\t\t\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[fibM]);
 
         fibMMm2 = fibMMm1;
         fibMMm1 = fibM;
@@ -47,7 +47,7 @@ void Fibonacci_Search::run_search(int array[],int origin_array[], int size, int 
         /* If search_node is greater than the value at index fibMm2,
            cut the subarray array from offset to i */
         if (array[i] < search_node) {
-            count_step = Search::visualize_processing_search("\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[i]);
+            count_step = Search::visualize_processing_search("\n\t\t\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[i]);
 
             fibM = fibMMm1;
             fibMMm1 = fibMMm2;
@@ -58,7 +58,7 @@ void Fibonacci_Search::run_search(int array[],int origin_array[], int size, int 
         /* If search_node is greater than the value at index fibMm2,
            cut the subarray after i+1  */
         else if (array[i] > search_node) {
-            count_step = Search::visualize_processing_search("\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[i]);
+            count_step = Search::visualize_processing_search("\n\t\t\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[i]);
 
             fibM = fibMMm2;
             fibMMm1 = fibMMm1 - fibMMm2;
@@ -69,7 +69,7 @@ void Fibonacci_Search::run_search(int array[],int origin_array[], int size, int 
         else{
             //return i;
 
-            count_step = Search::visualize_processing_search("\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[i]);
+            count_step = Search::visualize_processing_search("\n\t\t\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[i]);
             found_node = true;
             return;
         }
@@ -78,7 +78,7 @@ void Fibonacci_Search::run_search(int array[],int origin_array[], int size, int 
     /* comparing the last element with search_node */
     if (fibMMm1 && array[offset + 1] == search_node){
         //return offset + 1;
-        count_step = Search::visualize_processing_search("\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[offset + 1]);
+        count_step = Search::visualize_processing_search("\n\t\t\tFIBONACCI SEARCH",array,original_array,size,count_step,search_node,array[offset + 1]);
         found_node = true;
         return;
     }

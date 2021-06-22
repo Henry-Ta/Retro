@@ -19,11 +19,11 @@ void Linear_Search::run_search(int array[], int size, int search_node) {
     for (i = 0; i < size; i++){
 
         if (array[i] == search_node){
-            count_step = Search::visualize_processing_search("\tLINEAR SEARCH",array,original_array,size,count_step,search_node,array[i]);
+            count_step = Search::visualize_processing_search("\n\t\t\tLINEAR SEARCH",array,original_array,size,count_step,search_node,array[i]);
             found_node = true;
             return;
         }
-        count_step = Search::visualize_processing_search("\tLINEAR SEARCH",array,original_array,size,count_step,search_node,array[i]);
+        count_step = Search::visualize_processing_search("\n\t\t\tLINEAR SEARCH",array,original_array,size,count_step,search_node,array[i]);
     }
 
     if(!found_node)

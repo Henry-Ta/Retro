@@ -1,7 +1,7 @@
 #ifndef STATE_MANAGER_H
 #define STATE_MANAGER_H
 
-#include "user_profile.h"
+#include "user.h"
 #include "menu.h"
 #include "about.h"
 #include "user_page.h"
@@ -18,7 +18,7 @@
 
 using namespace std;
 
-class State_Manager : public User_Profile
+class State_Manager : public User
 {
 private:
     bool is_running;                // check whether a specific state is running (Menu, Log Out, Game,..)

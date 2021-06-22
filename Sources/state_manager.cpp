@@ -1,9 +1,9 @@
 #include "../Headers/state_manager.h"
 
 
-State_Manager::State_Manager():User_Profile()           // Constructor: inherits from User_Profile for user info
+State_Manager::State_Manager():User()           // Constructor: inherits from User for user info
 {
-    if(User_Profile::get_is_accessed()){                // passed user validation
+    if(User::get_is_accessed()){                // passed user validation
         this->set_is_running(true);
         this->set_state(13);                             // start with the state of Menu (13)
         this->run();
@@ -33,9 +33,9 @@ int State_Manager::get_state(){
 void State_Manager::update(){
     system("clear");
     //this->show_logo();
-    User_Profile::show_logo();
+    User::show_logo();
 
-    string id_upper = User_Profile::get_user_id();
+    string id_upper = User::get_user_id();
     transform(id_upper.begin(), id_upper.end(), id_upper.begin(), ::toupper);       // convert user id to upper case for displaying
     cout << "\n\t"+id_upper+"(11)\t\t\t\t\tLog Out(12)\n";
 
@@ -62,15 +62,15 @@ void State_Manager::update(){
 
         //----------------------------------------- System options
         case 11:
-            user_page.set_id(User_Profile::get_user_id());
-            user_page.set_password(User_Profile::get_user_password());
+            user_page.set_id(User::get_user_id());
+            user_page.set_password(User::get_user_password());
 
             this->load(11);
             break;
 
         case 12:
             system("clear");
-            User_Profile::set_is_accessed(false);
+            User::set_is_accessed(false);
             State_Manager();
             break;
 

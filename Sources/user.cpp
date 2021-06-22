@@ -1,7 +1,7 @@
-#include "../Headers/user_profile.h"
+#include "../Headers/user.h"
 
 
-User_Profile::User_Profile()
+User::User()
 {
     this->set_is_accessed(false);
     int choice;
@@ -25,35 +25,35 @@ User_Profile::User_Profile()
     }
 }
 
-void User_Profile::set_user_selection(int i){
+void User::set_user_selection(int i){
     this->user_selection = i;
 }
-int User_Profile::get_user_selection(){
+int User::get_user_selection(){
     return this->user_selection;
 }
 
-void User_Profile::set_user_id(string s){
+void User::set_user_id(string s){
     this->user_id = s;
 }
-string User_Profile::get_user_id(){
+string User::get_user_id(){
     return this->user_id;
 }
 
-void User_Profile::set_user_password(string s){
+void User::set_user_password(string s){
     this->user_password = s;
 }
-string User_Profile::get_user_password(){
+string User::get_user_password(){
     return this->user_password;
 }
 
-void User_Profile::set_user_score(int i){
+void User::set_user_score(int i){
     this->user_score = i;
 }
-int User_Profile::get_user_score(){
+int User::get_user_score(){
     return this->user_score;
 }
 
-void User_Profile::show_login_signup(){    
+void User::show_login_signup(){    
     system("clear");
     this->show_logo();
 
@@ -68,14 +68,14 @@ void User_Profile::show_login_signup(){
     cout << "\t\t\t  What's your choice ? ";
 }
 
-void User_Profile::set_is_accessed(bool b){
+void User::set_is_accessed(bool b){
     this->is_accessed = b;
 }
-bool User_Profile::get_is_accessed(){
+bool User::get_is_accessed(){
     return this->is_accessed;
 }
 
-void User_Profile::set_id_password(){
+void User::set_id_password(){
     string id, password;
 
     cout << "\t\t\t\tID: ";
@@ -91,7 +91,7 @@ void User_Profile::set_id_password(){
     this->set_user_password(password);
 }
 
-bool User_Profile::user_login(){
+bool User::user_login(){
     system("clear");
 
     this->show_logo();
@@ -121,7 +121,7 @@ bool User_Profile::user_login(){
     //return valid_login;
 }
 
-bool User_Profile::user_signup(){
+bool User::user_signup(){
     system("clear");
 
     this->show_logo();
@@ -143,7 +143,7 @@ bool User_Profile::user_signup(){
     return true;
 }
 
-void User_Profile::save_to_file(string id, string passwd, string file_name){
+void User::save_to_file(string id, string passwd, string file_name){
     string id_passwd = id + "," + passwd + "\n";		// uses ',' to seperate data
 
     ofstream file;			// open file, if not exist create a new file
@@ -151,7 +151,7 @@ void User_Profile::save_to_file(string id, string passwd, string file_name){
     file << id_passwd;
 }
 
-bool User_Profile::user_validation(string id, string passwd, string file_name){
+bool User::user_validation(string id, string passwd, string file_name){
     string line;
     string id_passwd = id + "," + passwd;       // insert ',' into string to match with line in file
     ifstream read_file(file_name);
@@ -164,7 +164,7 @@ bool User_Profile::user_validation(string id, string passwd, string file_name){
     return false;
 }
 
-void User_Profile::show_logo(){
+void User::show_logo(){
     /*
     cout<<"\n\t  _______  _______  _______  _______  ______   _______     \n";
     cout<<"\t (  ___  )(  ____ )(  ____ \\(  ___  )(  __  \\ (  ____ \\    \n";
