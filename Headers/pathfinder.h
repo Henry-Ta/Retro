@@ -20,7 +20,7 @@ public:
     bool match_above_node(Node check_node, Node above_node);
     bool match_below_node(Node check_node, Node below_node);
 
-    void copy_node(Node copied, Node copy);
+    void copy_node(Node *from_node, Node *to_node);
     void display_node(Node n);
 
 };
