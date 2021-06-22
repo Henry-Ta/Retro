@@ -16,6 +16,11 @@ public:
     int get_y_column();
 
     void set_row_column(int row, int col);
+
+    void go_up();
+    void go_down();
+    void go_left();
+    void go_right();
 };
 
 #endif // NODE_H

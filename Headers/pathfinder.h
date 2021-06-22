@@ -20,8 +20,6 @@ public:
     bool match_above_node(Node check_node, Node above_node);
     bool match_below_node(Node check_node, Node below_node);
 
-    int spiral_path(Node check_node, int row_size, int col_size);
-
     void copy_node(Node copied, Node copy);
     void display_node(Node n);
 

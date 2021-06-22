@@ -29,3 +29,18 @@ void Node::set_row_column(int row, int col){
     this->set_y_column(col);
 }
 
+void Node::go_up(){
+    this->set_x_row(this->get_x_row()-1);
+}
+
+void Node::go_down(){
+    this->set_x_row(this->get_x_row()+1);
+}
+
+void Node::go_left(){
+    this->set_y_column(this->get_y_column()-1); 
+}
+
+void Node::go_right(){
+    this->set_y_column(this->get_y_column()+1); 
+}

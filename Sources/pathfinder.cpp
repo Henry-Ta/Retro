@@ -31,7 +31,8 @@ void Pathfinder::print_map(char map[][COLUMN_SIZE], int max_row_size,int max_col
     int i,j;
     map[start_node.get_x_row()][start_node.get_y_column()]='S';
     map[end_node.get_x_row()][end_node.get_y_column()]='E';
-    map[check_node.get_x_row()][check_node.get_y_column()]='*';
+    if((check_node.get_x_row()>=0 && check_node.get_x_row()<max_row_size) && (check_node.get_y_column()>=0 && check_node.get_y_column()<max_col_size)) 
+        map[check_node.get_x_row()][check_node.get_y_column()]='*';
 
     for(i=0;i<max_row_size;i++){        // row
         cout <<"    •---------------------------------------------------------------•\n    ";
@@ -92,46 +93,6 @@ bool Pathfinder::match_below_node(Node check_node, Node below_node){
     return false;
 }
 
-int Pathfinder::spiral_path(Node check_node, int row_size, int col_size){
-    //int left = check_node.get_y_column()-1;
-    //int right = check_node.get_y_column()+1;
-    //int up= check_node.get_x_row()-1;
-    //int down= check_node.get_x_row()+1;
-
-    int current_row=check_node.get_x_row();
-    int current_col=check_node.get_y_column();
-
-    if(current_col-1<0){        // hit left wall
-        if(current_row-1<0)     // hit top left corner
-            //check_node.set_row_column(current_row,right);
-            return 0;
-        else
-            //check_node.set_row_column(up,current_col);  // go up
-            return 1;
-    }else if(current_row-1<0){  // hit top wall
-        if(current_col+1>COLUMN_SIZE-1)     // hit top right corner
-            //check_node.set_row_column(down,current_col);
-            return 2;
-        else
-            //check_node.set_row_column(current_row,right);   // go right
-            return 3;
-    }else if(current_col+1>COLUMN_SIZE-1){
-        if(current_row+1>ROW_SIZE-1)        // hit bottom right 
-            //check_node.set_row_column(current_row,left);
-            return 4;
-        else
-            //check_node.set_row_column(down,current_col);
-            return 5;
-    }else if(current_row+1>ROW_SIZE-1){
-        if(current_col-1<0)
-            //check_node.set_row_column(up,current_col);
-            return 6;
-        else
-            //check_node.set_row_column(current_row,left);
-            return 7;
-    }
-    return -1;
-}
 
 void Pathfinder::copy_node(Node copied, Node copy){
     copy.set_x_row(copied.get_x_row());
