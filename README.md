@@ -31,7 +31,7 @@ Requires below softwares preinstalled locally (The link is used for Arch users, 
 To compile, open terminal (Linux) and run this command:
 
 ```
-$ cd "directory of the project"
+$ git clone https://github.com/henry-ta/Retro ; cd Retro
 $ make clean ; make ; ./Retro
 ```
 
